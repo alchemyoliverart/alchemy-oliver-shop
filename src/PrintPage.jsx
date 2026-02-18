@@ -7,44 +7,48 @@ function PrintPage() {
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState('A2');
   const [framed, setFramed] = useState(false);
+  const [selectedThumb, setSelectedThumb] = useState(0);
 
-  const currentIndex = projects.findIndex(p => p.id === parseInt(id));
-  const project = projects[currentIndex];
+  const prices = {
+    A3: { unframed: 100, framed: 160 },
+    A2: { unframed: 150, framed: 210 },
+    A1: { unframed: 200, framed: 260 },
+  };
+
+  const currentPrice = prices[selectedSize][framed ? 'framed' : 'unframed'];
+
+  const project = projects.find(p => p.id === parseInt(id));
 
   if (!project) {
     return <div className="print-page-missing">Print not found.</div>;
   }
 
-  const goTo = (index, direction) => {
-    navigate(`/print/${projects[index].id}`, { state: { direction } });
-  };
+  // 4 placeholder thumbnails using the same image
+  const thumbnails = [project.image, project.image, project.image, project.image];
+
+  const otherProjects = projects.filter(p => p.id !== project.id);
 
   return (
     <div className="print-page">
       <div className="print-layout">
 
-        {/* Left — image + prev/next */}
+        {/* Left — image gallery */}
         <div className="print-left">
           <img
-            src={project.image}
+            src={thumbnails[selectedThumb]}
             alt={project.title}
             className="print-detail-image"
           />
-          <div className="print-arrows">
-            <button
-              className="arrow-btn"
-              onClick={() => goTo(currentIndex - 1, 'back')}
-              disabled={currentIndex === 0}
-            >
-              ← prev
-            </button>
-            <button
-              className="arrow-btn"
-              onClick={() => goTo(currentIndex + 1, 'forward')}
-              disabled={currentIndex === projects.length - 1}
-            >
-              next →
-            </button>
+          <div className="print-thumbnails">
+            {thumbnails.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`${project.title} view ${i + 1}`}
+                className={`print-thumb ${selectedThumb === i ? 'active' : ''}`}
+                onClick={() => setSelectedThumb(i)}
+              />
+            ))}
           </div>
         </div>
 
@@ -54,6 +58,8 @@ function PrintPage() {
           <p className="print-description">{project.description}</p>
 
           <div className="print-options">
+            <div className="print-price">${currentPrice}</div>
+
             <div className="option-group">
               <div className="option-label">Size</div>
               <div className="option-buttons">
@@ -88,9 +94,26 @@ function PrintPage() {
             </div>
           </div>
 
-          <button className="dm-button">DM to purchase</button>
+          <button className="dm-button">Purchase</button>
         </div>
 
+      </div>
+
+      {/* Other prints strip */}
+      <div className="other-prints">
+        <div className="other-prints-heading">other prints</div>
+        <div className="other-prints-scroll">
+          {otherProjects.map(p => (
+            <div
+              key={p.id}
+              className="other-print-card"
+              onClick={() => navigate(`/print/${p.id}`, { state: { direction: 'forward' } })}
+            >
+              <img src={p.image} alt={p.title} className="other-print-img" />
+              <div className="other-print-title">{p.title}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

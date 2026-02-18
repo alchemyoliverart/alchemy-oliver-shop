@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 function Nav() {
-  const [isGlitching, setIsGlitching] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const showBack = location.pathname.startsWith('/print/');
 
-  useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      if (Math.random() > 0.8) {
-        setIsGlitching(true);
-        setTimeout(() => setIsGlitching(false), 150);
-      }
-    }, 4000);
-    return () => clearInterval(glitchInterval);
-  }, []);
-
   return (
-    <nav className={`nav ${isGlitching ? 'glitch' : ''}`}>
+    <nav className="nav">
       <div className="nav-left">
         {showBack && (
           <button

@@ -1,0 +1,47 @@
+/* ============================================
+   PIXEL CURSOR SETUP — replace existing cursor styles in App.css
+   ============================================ */
+
+/* 1. Hide the existing .custom-cursor div entirely — we no longer need it */
+.custom-cursor {
+  display: none;
+}
+
+/* 2. Default arrow cursor for everything */
+body {
+  cursor: url('/cursor-arrow.svg') 0 0, auto;
+}
+
+/* 3. Pointer (hand) cursor for all clickable elements */
+a,
+button,
+.project-item-compact,
+[role="button"],
+[onClick] {
+  cursor: url('/cursor-pointer.svg') 3 0, pointer;
+}
+
+
+/* ============================================
+   HOW TO USE
+   ============================================
+   
+   1. Copy cursor-arrow.svg and cursor-pointer.svg into your /public folder
+   
+   2. In App.css, find the existing cursor styles:
+      - The `body { cursor: none; }` line
+      - The `.custom-cursor { ... }` block
+      Replace them with the CSS above.
+   
+   3. In App.jsx, you can REMOVE:
+      - The mousePosition state:        const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+      - The mousemove useEffect block
+      - The <div className="custom-cursor" ...> element in the JSX
+   
+   The hotspot values in url() are x y offset from top-left:
+      cursor-arrow.svg  → 0 0  (tip is at top-left corner)
+      cursor-pointer.svg → 3 0  (tip of index finger is at x=3, y=0)
+   
+   NOTE: SVG cursors have a max size of 128x128px in most browsers.
+   The files are 32x32px so they'll be crisp and clear.
+*/
