@@ -7,8 +7,8 @@
 :root {
   --primary-bg: #fafafa;
   --secondary-bg: #f5f5f5;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666;
+  --text-primary: #0047AB;
+  --text-secondary: #0047AB;
   --cobalt-blue: #0047AB;
   --glitch-color-1: #ff00ff;
   --glitch-color-2: #00ffff;
@@ -18,7 +18,7 @@ body {
   font-family: 'Space Mono', monospace;
   background-color: var(--primary-bg);
   color: var(--text-primary);
-  cursor: url('/cursor-arrow.svg') 0 0, auto;
+  cursor: none;
   overflow-x: hidden;
 }
 
@@ -27,11 +27,17 @@ body {
   min-height: 100vh;
 }
 
-a,
-button,
-.project-item-compact,
-[role="button"] {
-  cursor: url('/cursor-pointer.svg') 3 0, pointer;
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--cobalt-blue);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s ease;
+  mix-blend-mode: difference;
+  background: rgba(0, 71, 171, 0.2);
 }
 
 /* Slim Nav */
@@ -47,12 +53,26 @@ button,
   background: rgba(250, 250, 250, 0.98);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--cobalt-blue);
   height: 40px;
 }
 
 .nav-left {
   justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-back {
+  background: none;
+  border: none;
+  color: var(--cobalt-blue);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
 }
 
 .nav-center {
@@ -80,15 +100,36 @@ button,
   text-decoration: underline;
 }
 
+/* Top-Left Panel — lives inside hero, scrolls with it */
+.top-left-panel {
+  position: absolute;
+  top: 60px;
+  left: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.panel-tagline p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.panel-logo {
+  height: 80px;
+  width: auto;
+}
+
 /* Compact Projects Menu - Top Right Corner */
 .projects-menu {
-  position: fixed;
+  position: absolute;
   top: 60px;
   right: 3rem;
   z-index: 900;
   background: rgba(250, 250, 250, 0.95);
   padding: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--cobalt-blue);
   backdrop-filter: blur(10px);
   max-width: 300px;
 }
@@ -98,23 +139,22 @@ button,
   font-weight: 700;
   color: var(--cobalt-blue);
   margin-bottom: 0.75rem;
-  text-transform: lowercase;
 }
 
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
 }
 
 .project-item-compact {
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem 0;
+  padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   border-bottom: 1px solid transparent;
   font-size: 0.75rem;
+  line-height: 1.8;
 }
 
 .project-item-compact:hover,
@@ -137,14 +177,14 @@ button,
   color: var(--cobalt-blue);
 }
 
-/* Floating Images - Different Positions */
+/* Floating Images */
 .floating-image {
   position: fixed;
   width: 400px;
   height: 500px;
   z-index: 800;
   pointer-events: none;
-  animation: fadeIn 0.4s ease;
+  animation: fadeIn 0.15s ease;
   overflow: hidden;
 }
 
@@ -163,7 +203,7 @@ button,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cobalt-blue);
 }
 
 .scan-line {
@@ -179,67 +219,33 @@ button,
 }
 
 @keyframes scan {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: 100%;
-  }
+  0%   { top: 0; }
+  100% { top: 100%; }
+}
+
+/* Image Exit */
+.glitch-disperse {
+  width: 100%;
+  height: 100%;
+  animation: imageFadeOut 700ms ease-out 350ms forwards;
+}
+
+@keyframes imageFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 /* Position Classes */
-.floating-image-bottom-left {
-  bottom: 10%;
-  left: 5%;
-}
-
-.floating-image-top-center {
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.floating-image-middle-right {
-  top: 40%;
-  right: 25%;
-}
-
-.floating-image-top-left {
-  top: 12%;
-  left: 8%;
-}
-
-.floating-image-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.floating-image-bottom-right {
-  bottom: 8%;
-  right: 28%;
-}
-
-.floating-image-middle-left {
-  top: 45%;
-  left: 10%;
-}
-
-.floating-image-top-right {
-  top: 18%;
-  right: 30%;
-}
-
-.floating-image-bottom-center {
-  bottom: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.floating-image-center-right {
-  top: 35%;
-  right: 10%;
-}
+.floating-image-bottom-left   { bottom: 10%; left: 5%; }
+.floating-image-top-center    { top: 15%; left: 50%; transform: translateX(-50%); }
+.floating-image-middle-right  { top: 40%; right: 25%; }
+.floating-image-top-left      { top: 12%; left: 8%; }
+.floating-image-center        { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.floating-image-bottom-right  { bottom: 8%; right: 28%; }
+.floating-image-middle-left   { top: 45%; left: 10%; }
+.floating-image-top-right     { top: 18%; right: 30%; }
+.floating-image-bottom-center { bottom: 12%; left: 50%; transform: translateX(-50%); }
+.floating-image-center-right  { top: 35%; right: 10%; }
 
 /* Glitch Effects */
 .glitch {
@@ -247,82 +253,16 @@ button,
 }
 
 @keyframes glitch-nav {
-  0%, 100% {
-    transform: translate(0);
-  }
-  25% {
-    transform: translate(-2px, 2px);
-  }
-  50% {
-    transform: translate(2px, -2px);
-  }
+  0%, 100% { transform: translate(0); }
+  25%       { transform: translate(-2px, 2px); }
+  50%       { transform: translate(2px, -2px); }
 }
 
-.glitch-text {
-  animation: glitch-text 0.3s ease;
-}
-
-@keyframes glitch-text {
-  0%, 100% {
-    text-shadow: none;
-  }
-  25% {
-    text-shadow: -2px 0 var(--glitch-color-1), 2px 0 var(--glitch-color-2);
-  }
-  50% {
-    text-shadow: 2px 0 var(--glitch-color-1), -2px 0 var(--glitch-color-2);
-  }
-}
-
-/* Hero */
+/* Hero — first room, exact viewport height */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8rem 3rem 4rem;
-}
-
-.hero-content {
-  max-width: 800px;
-  text-align: center;
-}
-
-.logo-container {
-  margin-bottom: 3rem;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-logo {
-  height: 120px;
-  width: auto;
-  transition: all 0.3s ease;
-}
-
-.hero-logo:hover {
-  filter: drop-shadow(0 0 8px var(--cobalt-blue));
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: 400;
-  line-height: 1.3;
-  margin-bottom: 2rem;
-  text-transform: lowercase;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
-  color: var(--cobalt-blue);
-}
-
-.hero-description {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
+  position: relative;
+  height: 100vh;
+  background: var(--primary-bg);
 }
 
 /* About */
@@ -340,7 +280,6 @@ button,
 .section-title {
   font-size: 1.25rem;
   font-weight: 700;
-  text-transform: lowercase;
   margin-bottom: 2rem;
   color: var(--cobalt-blue);
 }
@@ -375,7 +314,7 @@ button,
 .footer {
   padding: 3rem;
   background: var(--secondary-bg);
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid var(--cobalt-blue);
   text-align: center;
 }
 
@@ -383,7 +322,6 @@ button,
   font-size: 0.75rem;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
-  text-transform: lowercase;
 }
 
 /* Responsive */
@@ -428,20 +366,180 @@ button,
     margin: 1rem 0;
   }
 
-  .hero {
-    padding: 6rem 1.5rem 3rem;
-  }
-
-  .hero-logo {
-    height: 80px;
-  }
-
-  .hero-title {
-    font-size: 1.75rem;
-  }
-
   .about,
   .store {
     padding: 4rem 1.5rem;
+  }
+}
+
+/* ─── Page transitions ─────────────────────────────────── */
+
+.page-transition {
+  width: 100%;
+}
+
+.slide-from-right {
+  animation: slideInRight 400ms ease-out;
+}
+
+.slide-from-left {
+  animation: slideInLeft 400ms ease-out;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ─── Print detail page ────────────────────────────────── */
+
+.print-page {
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+.print-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 40px);
+}
+
+.print-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  border-right: 1px solid var(--cobalt-blue);
+}
+
+.print-detail-image {
+  max-height: 65vh;
+  max-width: 100%;
+  object-fit: contain;
+  border: 1px solid var(--cobalt-blue);
+}
+
+.print-arrows {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.arrow-btn {
+  background: none;
+  border: 1px solid var(--cobalt-blue);
+  color: var(--cobalt-blue);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.arrow-btn:hover:not(:disabled) {
+  background: var(--cobalt-blue);
+  color: #fff;
+}
+
+.arrow-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.print-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  gap: 2rem;
+}
+
+.print-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cobalt-blue);
+}
+
+.print-description {
+  font-size: 0.75rem;
+  line-height: 1.8;
+  color: var(--cobalt-blue);
+}
+
+.print-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cobalt-blue);
+}
+
+.option-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.option-btn {
+  background: none;
+  border: 1px solid var(--cobalt-blue);
+  color: var(--cobalt-blue);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.option-btn.active,
+.option-btn:hover {
+  background: var(--cobalt-blue);
+  color: #fff;
+}
+
+.dm-button {
+  align-self: flex-start;
+  background: var(--cobalt-blue);
+  color: #fff;
+  border: 1px solid var(--cobalt-blue);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.dm-button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .print-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .print-left {
+    border-right: none;
+    border-bottom: 1px solid var(--cobalt-blue);
+    padding: 2rem 1.5rem;
+  }
+
+  .print-right {
+    padding: 2rem 1.5rem;
   }
 }
