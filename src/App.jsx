@@ -9,7 +9,7 @@ function HomePage() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [isPastHero, setIsPastHero] = useState(false);
   const [exitingProject, setExitingProject] = useState(null);
-  const [mobileExpandedId, setMobileExpandedId] = useState(null);
+  const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
   const [polaroidFanned, setPolaroidFanned] = useState(false);
   const aboutRef = React.useRef(null);
   const navigate = useNavigate();
@@ -116,12 +116,16 @@ function HomePage() {
             {projects.map((project) => (
               <React.Fragment key={project.id}>
                 <div
-                  className={`project-item-compact ${hoveredProject?.id === project.id ? 'active' : ''} ${mobileExpandedId === project.id ? 'mobile-active' : ''}`}
+                  className={`project-item-compact ${hoveredProject?.id === project.id ? 'active' : ''} ${mobileExpandedIds.has(project.id) ? 'mobile-active' : ''}`}
                   onMouseEnter={() => handleProjectSwitch(project)}
                   onMouseLeave={handleMouseLeave}
                   onClick={() => {
                     if (window.innerWidth < 768) {
-                      setMobileExpandedId(prev => prev === project.id ? null : project.id);
+                      setMobileExpandedIds(prev => {
+                        const next = new Set(prev);
+                        next.has(project.id) ? next.delete(project.id) : next.add(project.id);
+                        return next;
+                      });
                     } else {
                       navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
                     }
@@ -129,9 +133,15 @@ function HomePage() {
                 >
                   <span className="project-number-compact">{String(project.id).padStart(2, '0')}</span>
                   <span className="project-title-compact">{project.title}</span>
-                  <span className="project-inquire">inquire →</span>
+                  <span
+                    className="project-inquire"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
+                    }}
+                  >inquire →</span>
                 </div>
-                {mobileExpandedId === project.id && (
+                {mobileExpandedIds.has(project.id) && (
                   <div className="mobile-project-image">
                     <img src={project.image} alt={project.title} />
                   </div>

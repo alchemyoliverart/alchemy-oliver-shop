@@ -735,6 +735,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .print-page {
+    padding-top: 110px;
+  }
+
   .print-layout {
     grid-template-columns: 1fr;
   }
