@@ -534,6 +534,12 @@ body {
   border-right: 1px solid var(--cobalt-blue);
 }
 
+.print-detail-image-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
 .print-detail-image {
   max-height: 65vh;
   max-width: 100%;

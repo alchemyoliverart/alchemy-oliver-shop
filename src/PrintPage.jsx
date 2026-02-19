@@ -34,11 +34,14 @@ function PrintPage() {
 
         {/* Left — image gallery */}
         <div className="print-left">
-          <img
-            src={thumbnails[selectedThumb]}
-            alt={project.title}
-            className="print-detail-image"
-          />
+          <div className="print-detail-image-wrap">
+            <img
+              src={thumbnails[selectedThumb]}
+              alt={project.title}
+              className="print-detail-image"
+            />
+            <div className="scan-line"></div>
+          </div>
           <div className="print-thumbnails">
             {thumbnails.map((src, i) => (
               <img

@@ -107,7 +107,6 @@ function HomePage() {
             <p>Flowers that last forever.</p>
             <p>Memories held, re-imagined as florals that don't fade.</p>
           </div>
-          <img src="/logo.png" alt="Alchemy Oliver" className="panel-logo" />
         </div>
 
         {/* Available prints menu — top right, absolute inside hero */}
@@ -261,10 +260,11 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const isPrintPage = location.pathname.startsWith('/print/');
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
   return (
-    <div className={isGlitching ? 'glitch' : ''}>
+    <div className={isGlitching && !isPrintPage ? 'glitch' : ''}>
       {/* Shared nav */}
       <Nav />
 
