@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Nav from './Nav.jsx';
 import PrintPage from './PrintPage.jsx';
+import ContactPage from './Contact.jsx';
 import projects from './projects.js';
 import './App.css';
 
@@ -74,7 +75,7 @@ function HomePage() {
           className={`floating-image floating-image-${hoveredProject.position}`}
         >
           <img
-            src={hoveredProject.image}
+            src={hoveredProject.images[0]}
             alt={hoveredProject.title}
             className="floating-image-content"
           />
@@ -90,7 +91,7 @@ function HomePage() {
         >
           <div className="glitch-disperse">
             <img
-              src={exitingProject.image}
+              src={exitingProject.images[0]}
               alt={exitingProject.title}
               className="floating-image-content"
             />
@@ -100,16 +101,21 @@ function HomePage() {
 
       {/* Hero — first room */}
       <section className="hero" id="hero">
-        {/* Top-left panel: tagline + logo */}
+        {/* Left panel: tagline + about */}
         <div className="top-left-panel">
           <div className="panel-tagline">
-            <p>Scanography and multi-media artist.</p>
-            <p>Flowers that last forever.</p>
-            <p>Memories held, re-imagined as florals that don't fade.</p>
+            <p>"petals, pixels, memory"</p>
+            <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
+          </div>
+          <div className="panel-about">
+            <p>i gather flowers from passing moments<br />and preserve them in light through scanning and digital layering,<br />creating quiet archives of memory and impermanence.</p>
           </div>
         </div>
 
-        {/* Available prints menu — top right, absolute inside hero */}
+        {/* Right side: two boxes stacked */}
+        <div className="hero-right-panels">
+
+        {/* Available prints menu */}
         <div className="projects-menu">
           <div className="projects-header">Available prints</div>
           <div className="projects-list">
@@ -133,6 +139,7 @@ function HomePage() {
                 >
                   <span className="project-number-compact">{String(project.id).padStart(2, '0')}</span>
                   <span className="project-title-compact">{project.title}</span>
+                  {project.soldOut && <span className="project-sold">sold</span>}
                   <span
                     className="project-inquire"
                     onClick={(e) => {
@@ -143,33 +150,25 @@ function HomePage() {
                 </div>
                 {mobileExpandedIds.has(project.id) && (
                   <div className="mobile-project-image">
-                    <img src={project.image} alt={project.title} />
+                    <img src={project.images[0]} alt={project.title} />
                   </div>
                 )}
               </React.Fragment>
             ))}
           </div>
         </div>
+
+        {/* Ordering box */}
+        <div className="ordering-box">
+          <div className="ordering-header">ordering</div>
+          <p className="ordering-text">print orders are now back open for 2026.</p>
+          <p className="ordering-text">available as unframed prints or professionally framed.</p>
+          <p className="ordering-text">each arrangement is either created just for you, or drawn from my own life — moments lived, memories held — re-imagined as florals that don't fade.</p>
+        </div>
+
+        </div>{/* end hero-right-panels */}
       </section>
 
-      {/* Store */}
-      <section className="store" id="store">
-        <div className="store-content">
-          <h2 className="section-title">ordering</h2>
-          <p className="store-text">
-            print orders are now back open for 2026.
-          </p>
-          <p className="store-text">
-            each arrangement is either created just for you,<br />
-            or drawn from my own life —<br />
-            moments lived, memories held —<br />
-            re-imagined as florals that don't fade.
-          </p>
-          <p className="store-text">
-            available as unframed prints or professionally framed.
-          </p>
-        </div>
-      </section>
 
       {/* About */}
       <section className="about" id="about" ref={aboutRef}>
@@ -177,32 +176,45 @@ function HomePage() {
           <div className="about-text">
             <h2 className="section-title">about</h2>
             <p className="about-paragraph">
-              a binder of time,<br />
-              plastic sleeves whispering<br />
-              remember this.
+              i am a multidisciplinary artist working across digital collage, photography, and poetic text.
+              my practice explores fragmented memory through scanned flora, soft textures, and layered imagery.
+              gathering flowers from walks, gardens, and fleeting encounters with the natural world,
+              i form an intimate connection with each botanical fragment.
+              every bloom carries its own story —
+              a quiet trace of time, presence, and impermanence.
             </p>
             <p className="about-paragraph">
-              petals leaning into a fence,<br />
-              into wire,<br />
-              into afternoon shade —<br />
-              soft against something<br />
-              that tries to hold them back.
+              using a flatbed scanner as my primary tool,
+              these delicate forms are preserved directly in light,
+              capturing intricate details and textures in a suspended space
+              between presence and disappearance.
+              through digital manipulation and layering,
+              they are transformed into luminous compositions
+              that exist between the organic and the digital.
             </p>
             <p className="about-paragraph">
-              pressed light, kept carefully —<br />
-              flowers for grief,<br />
-              flowers for staying.
+              engaging themes of grief, light, and transformation,
+              i describe my process as a form of "fragmented reflection" —
+              a way of holding onto fleeting moments
+              and creating visual archives of what cannot remain.
+              my work seeks to evoke a sense of tranquillity, awe,
+              and quiet reverence for the natural world,
+              while exploring the subtle harmony that can emerge
+              from the intersection of art, technology, and botany.
+            </p>
+            <p className="about-paragraph">
+              i hold a bachelor of fine arts from monash university,
+              including study abroad in prato, italy (2013).
+              i am interested in the space where nature meets technology —
+              where something living becomes pixel,
+              where a fleeting moment becomes an archive.
+              each work acts as a quiet act of preservation.
+              a way of holding onto light.
+              a way of remembering.
             </p>
           </div>
 
-          <div className={`polaroid-stack ${polaroidFanned ? 'fanned' : ''}`}>
-            <div className="polaroid polaroid-back">
-              <img src="/polaroid1.png" alt="" className="polaroid-img" />
-            </div>
-            <div className="polaroid polaroid-front">
-              <img src="/polaroid2.png" alt="" className="polaroid-img" />
-            </div>
-          </div>
+          <img src="/Logo blue.png" alt="Alchemy Oliver" className="about-logo" />
         </div>
       </section>
 
@@ -270,7 +282,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const isPrintPage = location.pathname.startsWith('/print/');
+  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact';
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
   return (
@@ -283,6 +295,7 @@ function App() {
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/print/:id" element={<PrintPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </div>

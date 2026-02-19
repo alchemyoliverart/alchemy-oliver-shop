@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import projects from './projects.js';
 
 function PrintPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState('A2');
-  const [framed, setFramed] = useState(false);
   const [selectedThumb, setSelectedThumb] = useState(0);
 
-  const prices = {
-    A3: { unframed: 100, framed: 160 },
-    A2: { unframed: 150, framed: 210 },
-    A1: { unframed: 200, framed: 260 },
-  };
+  const prices = { A3: 280, A2: 400, A1: 650 };
 
-  const currentPrice = prices[selectedSize][framed ? 'framed' : 'unframed'];
+  const currentPrice = prices[selectedSize];
 
   const project = projects.find(p => p.id === parseInt(id));
 
@@ -23,8 +18,7 @@ function PrintPage() {
     return <div className="print-page-missing">Print not found.</div>;
   }
 
-  // 4 placeholder thumbnails using the same image
-  const thumbnails = [project.image, project.image, project.image, project.image];
+  const thumbnails = project.images;
 
   const otherProjects = projects.filter(p => p.id !== project.id);
 
@@ -58,7 +52,9 @@ function PrintPage() {
         {/* Right — details + purchase */}
         <div className="print-right">
           <h1 className="print-title">{project.title}</h1>
-          <p className="print-description">{project.description}</p>
+          {project.description && (
+            <p className="print-description" style={{ whiteSpace: 'pre-line' }}>{project.description}</p>
+          )}
 
           <div className="print-options">
             <div className="print-price">${currentPrice}</div>
@@ -78,26 +74,33 @@ function PrintPage() {
               </div>
             </div>
 
-            <div className="option-group">
-              <div className="option-label">Finish</div>
-              <div className="option-buttons">
-                <button
-                  className={`option-btn ${!framed ? 'active' : ''}`}
-                  onClick={() => setFramed(false)}
-                >
-                  Unframed
-                </button>
-                <button
-                  className={`option-btn ${framed ? 'active' : ''}`}
-                  onClick={() => setFramed(true)}
-                >
-                  Framed
-                </button>
-              </div>
-            </div>
           </div>
 
-          <button className="dm-button">Purchase</button>
+          {project.soldOut
+            ? <span className="dm-button dm-button-sold">sold out</span>
+            : <Link to="/contact" className="dm-button">enquire</Link>
+          }
+          <div className="print-fine-print-group">
+            <p className="print-fine-print">
+              all prints are unframed by default.<br />
+              framing can be arranged on request<br />
+              and quoted individually depending on size and style.<br />
+              each print is hand-signed<br />
+              and comes with a certificate of authenticity.
+            </p>
+            <p className="print-fine-print">
+              all prints are professionally produced using archival pigment inks<br />
+              on museum-grade gold fibre pearl baryta paper.<br />
+              this premium fine-art paper offers exceptional colour depth,<br />
+              rich blacks, and long-term archival stability,<br />
+              ensuring each artwork is made to last for generations.
+            </p>
+            <p className="print-fine-print">
+              orders are fulfilled with care. from printing to signing to packaging,<br />
+              each piece is given the time it deserves —<br />
+              typically 2–3 weeks before dispatch.
+            </p>
+          </div>
         </div>
 
       </div>
@@ -112,7 +115,7 @@ function PrintPage() {
               className="other-print-card"
               onClick={() => navigate(`/print/${p.id}`, { state: { direction: 'forward' } })}
             >
-              <img src={p.image} alt={p.title} className="other-print-img" />
+              <img src={p.images[0]} alt={p.title} className="other-print-img" />
               <div className="other-print-title">{p.title}</div>
             </div>
           ))}

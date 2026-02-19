@@ -1,45 +1,38 @@
 const projects = [
   {
     id: 1,
-    title: 'Pressed light',
-    image: '/print-01.png',
-    position: 'bottom-left',
-    description: 'A soft study in pressed botanicals — petals held between glass, light captured mid-lean.',
+    title: 'petals, pixels, and memory — orchid',
+    images: [
+      '/petels-Pixels-andmemory_orchid.jpg',
+      '/petels-pixels-andmemory_orchid.1.png',
+      '/petals-pixels-andmemory_orchid2Framed.jpg'
+    ],
+    position: 'center',
+    description: 'orchid studies, unraveled by light and time.\nslowly easing back into sharing again.\n\nsomething about the way light moves after shadow -\nhow softness can return,\nquietly, without asking.',
+    soldOut: false,
   },
   {
     id: 2,
-    title: 'Flowers for grief',
-    image: '/print-02.png',
-    position: 'top-center',
-    description: 'Made in the weeks after a loss. Florals as a way of staying close to what was left.',
+    title: 'another fragment — orchid',
+    images: [
+      '/another_fragment.jpg',
+      '/another_fragment1.jpg',
+      '/another_fragment_framed.jpg'
+    ],
+    position: 'bottom-left',
+    description: 'another fragment\n\nfrom the same quiet place\nthe light changed,\nbut the feeling stayed.\n\nbetween bloom and blur:\na slow unraveling,\nwhere shadow folds into softness,\nand absence\nmakes a new kind of shape.\n\nsome things fade.\nothers stay -\njust in different forms.',
+    soldOut: false,
   },
   {
     id: 3,
-    title: 'What the light showed',
-    image: '/print-03.png',
-    position: 'middle-right',
-    description: 'A scanography of afternoon light through dried stems — what remains when colour leaves.',
-  },
-  {
-    id: 4,
-    title: 'Petals leaning into a fence',
-    image: '/print-04.png',
-    position: 'top-left',
-    description: 'Found growth, pressed gently. Something soft persisting against something harder.',
-  },
-  {
-    id: 5,
-    title: 'Memory filed gently',
-    image: '/print-05.png',
-    position: 'center',
-    description: 'An archive of small things — petals, fragments, the texture of time held still.',
-  },
-  {
-    id: 6,
-    title: 'The afterglow',
-    image: '/print-06.png',
-    position: 'bottom-right',
-    description: 'The residue of bloom. What a flower looks like the morning after it was most alive.',
+    title: 'floral fragments',
+    images: [
+      '/floral_fragments.jpg',
+      '/floral_fragments_framed.jpg'
+    ],
+    position: 'top-right',
+    description: 'a bloom breaking apart in light,\neach petal drifting into signal and noise.\n\nwhat remains\nis not the flower itself,\nbut the feeling of it.',
+    soldOut: false,
   },
 ];
 

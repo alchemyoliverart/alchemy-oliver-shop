@@ -4,21 +4,27 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  font-style: italic;
+}
+
 :root {
   --primary-bg: rgb(240, 238, 237);
   --secondary-bg: rgb(240, 238, 237);
-  --text-primary: #0047AB;
-  --text-secondary: #0047AB;
-  --cobalt-blue: #0047AB;
+  --text-primary: #0000FF;
+  --text-secondary: #0000FF;
+  --cobalt-blue: #0000FF;
   --glitch-color-1: #ff00ff;
   --glitch-color-2: #00ffff;
 }
 
 body {
-  font-family: 'Space Mono', monospace;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
   background-color: var(--primary-bg);
   color: var(--text-primary);
-
+  text-transform: lowercase;
+  line-height: 0.7;
   overflow-x: hidden;
 }
 
@@ -56,7 +62,7 @@ body {
   background: none;
   border: none;
   color: var(--cobalt-blue);
-  font-family: 'Space Mono', monospace;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
   font-size: 0.75rem;
   cursor: pointer;
   padding: 0;
@@ -95,13 +101,54 @@ body {
   left: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
+  max-width: 360px;
 }
 
 .panel-tagline p {
   font-size: 0.75rem;
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.35;
+}
+
+.panel-about p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+/* Right side stacked boxes */
+.hero-right-panels {
+  position: absolute;
+  top: 60px;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 900;
+}
+
+.ordering-box {
+  background: rgba(240, 238, 237, 0.95);
+  padding: 1rem;
+  border: 1px solid var(--cobalt-blue);
+  backdrop-filter: blur(10px);
+  max-width: 300px;
+}
+
+.ordering-header {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cobalt-blue);
+  margin-bottom: 0.75rem;
+}
+
+.ordering-text {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
 }
 
 .panel-logo {
@@ -109,12 +156,8 @@ body {
   width: auto;
 }
 
-/* Compact Projects Menu - Top Right Corner */
+/* Compact Projects Menu */
 .projects-menu {
-  position: absolute;
-  top: 60px;
-  right: 3rem;
-  z-index: 900;
   background: rgba(240, 238, 237, 0.95);
   padding: 1rem;
   border: 1px solid var(--cobalt-blue);
@@ -270,15 +313,16 @@ body {
   min-height: 60vh;
   padding: 4rem 3rem;
   background: rgb(240, 238, 237);
-  border-top: 1px solid #0047AB;
+  border-top: 1px solid #0000FF;
 }
 
 .about-content {
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 414px;
+  grid-template-columns: 1fr 300px;
   gap: 4rem;
+  align-items: end;
   align-items: center;
 }
 
@@ -337,17 +381,26 @@ body {
 }
 
 .section-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 0.5rem;
   color: var(--cobalt-blue);
   text-transform: lowercase;
 }
 
+.about-logo {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  justify-self: end;
+}
+
 .about-paragraph {
-  font-size: 0.875rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  margin-bottom: 1rem;
   color: var(--text-secondary);
 }
 
@@ -356,7 +409,7 @@ body {
   min-height: 60vh;
   padding: 4rem 3rem;
   background: var(--primary-bg);
-  border-top: 1px solid #0047AB;
+  border-top: 1px solid #0000FF;
 }
 
 .store-content {
@@ -376,7 +429,7 @@ body {
 .footer {
   padding: 3rem;
   background: var(--secondary-bg);
-  border-top: 1px solid #0047AB;
+  border-top: 1px solid #0000FF;
   text-align: center;
 }
 
@@ -437,10 +490,15 @@ body {
     left: auto;
   }
 
-  .projects-menu {
+  .hero-right-panels {
     position: relative;
     top: auto;
     right: auto;
+    width: 100%;
+  }
+
+  .projects-menu,
+  .ordering-box {
     max-width: 100%;
   }
 
@@ -483,6 +541,11 @@ body {
     gap: 2.5rem;
   }
 
+  .about-logo {
+    justify-self: center;
+    max-width: 220px;
+  }
+
   .polaroid-stack {
     margin: 0 auto;
   }
@@ -510,6 +573,106 @@ body {
 @keyframes slideInLeft {
   from { transform: translateX(-100%); }
   to   { transform: translateX(0); }
+}
+
+/* ─── Contact page ─────────────────────────────────────── */
+
+.contact-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 6rem 3rem 4rem;
+}
+
+.contact-logo {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 260px;
+  height: auto;
+}
+
+.contact-heading {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cobalt-blue);
+  margin-bottom: 2rem;
+}
+
+.contact-intro {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.contact-email {
+  color: var(--cobalt-blue);
+  text-decoration: none;
+}
+
+.contact-email:hover {
+  text-decoration: underline;
+}
+
+.contact-section {
+  margin-bottom: 2rem;
+  border-top: 1px solid var(--cobalt-blue);
+  padding-top: 1.25rem;
+}
+
+.contact-subheading {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cobalt-blue);
+  margin-bottom: 0.75rem;
+}
+
+.contact-text {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.contact-form {
+  border-top: 1px solid var(--cobalt-blue);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-size: 0.7rem;
+  color: var(--cobalt-blue);
+}
+
+.form-input {
+  background: transparent;
+  border: 1px solid var(--cobalt-blue);
+  color: var(--cobalt-blue);
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  text-transform: lowercase;
+}
+
+.form-input:focus {
+  border-color: var(--cobalt-blue);
+  opacity: 1;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 /* ─── Print detail page ────────────────────────────────── */
@@ -557,7 +720,7 @@ body {
   background: none;
   border: 1px solid var(--cobalt-blue);
   color: var(--cobalt-blue);
-  font-family: 'Space Mono', monospace;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
   font-size: 0.75rem;
   padding: 0.4rem 0.75rem;
   cursor: pointer;
@@ -627,7 +790,7 @@ body {
   background: none;
   border: 1px solid var(--cobalt-blue);
   color: var(--cobalt-blue);
-  font-family: 'Space Mono', monospace;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
   font-size: 0.75rem;
   padding: 0.4rem 1rem;
   cursor: pointer;
@@ -645,15 +808,47 @@ body {
   background: var(--cobalt-blue);
   color: #fff;
   border: 1px solid var(--cobalt-blue);
-  font-family: 'Space Mono', monospace;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
   font-size: 0.75rem;
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   transition: opacity 0.15s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .dm-button:hover {
   opacity: 0.8;
+}
+
+.dm-button-sold {
+  background: #aaa;
+  border-color: #aaa;
+  cursor: default;
+  pointer-events: none;
+}
+
+.dm-button-sold:hover {
+  opacity: 1;
+}
+
+.project-sold {
+  font-size: 0.6rem;
+  color: #aaa;
+  margin-left: 0.4rem;
+}
+
+.print-fine-print-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.print-fine-print {
+  font-size: 0.65rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  opacity: 0.7;
 }
 
 /* Thumbnails */
