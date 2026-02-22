@@ -12,7 +12,7 @@ function ContactPage() {
 
   return (
     <div className="contact-page">
-      <img src="/Logo.jpg" alt="Alchemy Oliver" className="contact-logo" />
+      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" />
 
       <h1 className="contact-heading">contact</h1>
 
