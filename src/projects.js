@@ -1,7 +1,7 @@
 const projects = [
   {
     id: 1,
-    title: 'petals, pixels, and memory — orchid',
+    title: 'petals, pixels, and memory_orchid',
     images: [
       '/petels-Pixels-andmemory_orchid.jpg',
       '/petels-pixels-andmemory_orchid.1.png',
@@ -13,7 +13,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'another fragment — orchid',
+    title: 'another fragment_orchid',
     images: [
       '/another_fragment.jpg',
       '/another_fragment1.jpg',
@@ -25,7 +25,7 @@ const projects = [
   },
   {
     id: 3,
-    title: 'floral fragments',
+    title: 'floral_fragments',
     images: [
       '/floral_fragments.jpg',
       '/floral_fragments_framed.jpg'
