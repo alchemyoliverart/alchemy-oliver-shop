@@ -9,14 +9,15 @@ import './App.css';
 function HomePage() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [isPastHero, setIsPastHero] = useState(false);
-  const [displayedProject, setDisplayedProject] = useState(null);
-  const [imgOpacity, setImgOpacity] = useState(0);
+  const [topProject, setTopProject] = useState(null);
+  const [topOpacity, setTopOpacity] = useState(0);
+  const [bottomProject, setBottomProject] = useState(null);
+  const [bottomOpacity, setBottomOpacity] = useState(0);
   const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
   const [polaroidFanned, setPolaroidFanned] = useState(false);
   const aboutRef = React.useRef(null);
   const navigate = useNavigate();
-  const isVisibleRef = React.useRef(false);
-  const sequenceTimer = React.useRef(null);
+  const cleanupTimer = React.useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,52 +43,57 @@ function HomePage() {
 
   const showProject = (project) => {
     setHoveredProject(project);
-    clearTimeout(sequenceTimer.current);
-    if (!isVisibleRef.current) {
-      // Nothing visible — set image and fade straight in
-      setDisplayedProject(project);
+    clearTimeout(cleanupTimer.current);
+
+    if (topProject && topProject.id !== project.id) {
+      // Move current image to background (slow fade out), bring new one in on top
+      setBottomProject(topProject);
+      setBottomOpacity(1);
+      setTopProject(project);
+      setTopOpacity(0);
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        setImgOpacity(1);
-        isVisibleRef.current = true;
+        setTopOpacity(1);
+        setBottomOpacity(0);
       }));
-    } else {
-      // Something visible — fade out first, swap, then fade in
-      setImgOpacity(0);
-      isVisibleRef.current = false;
-      sequenceTimer.current = setTimeout(() => {
-        setDisplayedProject(project);
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          setImgOpacity(1);
-          isVisibleRef.current = true;
-        }));
-      }, 150);
+      // Unmount background image after it finishes fading
+      cleanupTimer.current = setTimeout(() => setBottomProject(null), 800);
+    } else if (!topProject) {
+      // Nothing shown yet — fade straight in
+      setTopProject(project);
+      requestAnimationFrame(() => requestAnimationFrame(() => setTopOpacity(1)));
     }
   };
 
   const hideProject = () => {
     setHoveredProject(null);
-    clearTimeout(sequenceTimer.current);
-    setImgOpacity(0);
-    isVisibleRef.current = false;
-    sequenceTimer.current = setTimeout(() => setDisplayedProject(null), 150);
+    clearTimeout(cleanupTimer.current);
+    setTopOpacity(0);
+    setBottomOpacity(0);
+    cleanupTimer.current = setTimeout(() => {
+      setTopProject(null);
+      setBottomProject(null);
+    }, 800);
   };
 
   return (
     <div className="app">
-      {/* Single floating image — opacity cross-fades sequentially */}
-      {displayedProject && !isPastHero && (
+      {/* Bottom layer — outgoing image, fades out slowly */}
+      {bottomProject && !isPastHero && (
         <div
-          className={`floating-image floating-image-${displayedProject.position}`}
-          style={{
-            opacity: imgOpacity,
-            transition: imgOpacity === 1 ? 'opacity 300ms ease' : 'opacity 150ms ease',
-          }}
+          className={`floating-image floating-image-${bottomProject.position}`}
+          style={{ opacity: bottomOpacity, transition: 'opacity 800ms ease' }}
         >
-          <img
-            src={displayedProject.images[0]}
-            alt={displayedProject.title}
-            className="floating-image-content"
-          />
+          <img src={bottomProject.images[0]} alt={bottomProject.title} className="floating-image-content" />
+        </div>
+      )}
+
+      {/* Top layer — incoming image, fades in quickly */}
+      {topProject && !isPastHero && (
+        <div
+          className={`floating-image floating-image-${topProject.position}`}
+          style={{ opacity: topOpacity, transition: 'opacity 350ms ease' }}
+        >
+          <img src={topProject.images[0]} alt={topProject.title} className="floating-image-content" />
           <div className="scan-line"></div>
         </div>
       )}
