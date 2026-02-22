@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Nav from './Nav.jsx';
 import PrintPage from './PrintPage.jsx';
 import ContactPage from './Contact.jsx';
@@ -303,6 +304,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
+      <Analytics />
     </div>
   );
 }
