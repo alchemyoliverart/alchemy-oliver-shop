@@ -215,8 +215,8 @@ function HomePage() {
           </div>
 
           <div className="about-images">
-            <img src="/The_innocent_1.jpeg" alt="The innocent 1" className="about-image" />
-            <img src="/The_innocent_2.jpeg" alt="The innocent 2" className="about-image" />
+            <img src="/The innocent 1.jpeg" alt="The innocent 1" className="about-image" />
+            <img src="/The innocent 2.jpeg" alt="The innocent 2" className="about-image" />
           </div>
         </div>
       </section>
