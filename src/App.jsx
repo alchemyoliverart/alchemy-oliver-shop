@@ -80,6 +80,7 @@ function HomePage() {
       {/* Bottom layer — outgoing image, fades out slowly */}
       {bottomProject && !isPastHero && (
         <div
+          key={`bottom-${bottomProject.id}`}
           className={`floating-image floating-image-${bottomProject.position}`}
           style={{ opacity: bottomOpacity, transition: 'opacity 800ms ease' }}
         >
@@ -87,9 +88,10 @@ function HomePage() {
         </div>
       )}
 
-      {/* Top layer — incoming image, fades in quickly */}
+      {/* Top layer — incoming image, fades in quickly on a fresh element per project */}
       {topProject && !isPastHero && (
         <div
+          key={`top-${topProject.id}`}
           className={`floating-image floating-image-${topProject.position}`}
           style={{ opacity: topOpacity, transition: 'opacity 350ms ease' }}
         >
