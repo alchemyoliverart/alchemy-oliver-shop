@@ -9,11 +9,14 @@ import './App.css';
 function HomePage() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [isPastHero, setIsPastHero] = useState(false);
-  const [exitingProject, setExitingProject] = useState(null);
+  const [displayedProject, setDisplayedProject] = useState(null);
+  const [imgOpacity, setImgOpacity] = useState(0);
   const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
   const [polaroidFanned, setPolaroidFanned] = useState(false);
   const aboutRef = React.useRef(null);
   const navigate = useNavigate();
+  const isVisibleRef = React.useRef(false);
+  const sequenceTimer = React.useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,65 +40,55 @@ function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const exitTimer = React.useRef(null);
-
-  const handleMouseEnter = (project) => {
-    // Cancel any pending exit cleanup for this project
-    if (exitingProject?.id === project.id) {
-      clearTimeout(exitTimer.current);
-      setExitingProject(null);
-    }
+  const showProject = (project) => {
     setHoveredProject(project);
+    clearTimeout(sequenceTimer.current);
+    if (!isVisibleRef.current) {
+      // Nothing visible — set image and fade straight in
+      setDisplayedProject(project);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setImgOpacity(1);
+        isVisibleRef.current = true;
+      }));
+    } else {
+      // Something visible — fade out first, swap, then fade in
+      setImgOpacity(0);
+      isVisibleRef.current = false;
+      sequenceTimer.current = setTimeout(() => {
+        setDisplayedProject(project);
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          setImgOpacity(1);
+          isVisibleRef.current = true;
+        }));
+      }, 150);
+    }
   };
 
-  const handleMouseLeave = () => {
-    if (hoveredProject) {
-      setExitingProject(hoveredProject);
-      exitTimer.current = setTimeout(() => setExitingProject(null), 600);
-    }
+  const hideProject = () => {
     setHoveredProject(null);
-  };
-
-  const handleProjectSwitch = (project) => {
-    // Switching directly from one title to another
-    if (hoveredProject && hoveredProject.id !== project.id) {
-      setExitingProject(hoveredProject);
-      clearTimeout(exitTimer.current);
-      exitTimer.current = setTimeout(() => setExitingProject(null), 600);
-    }
-    setHoveredProject(project);
+    clearTimeout(sequenceTimer.current);
+    setImgOpacity(0);
+    isVisibleRef.current = false;
+    sequenceTimer.current = setTimeout(() => setDisplayedProject(null), 150);
   };
 
   return (
     <div className="app">
-      {/* Active hover image — no fade-out animation, stays while hovering */}
-      {hoveredProject && !isPastHero && (
+      {/* Single floating image — opacity cross-fades sequentially */}
+      {displayedProject && !isPastHero && (
         <div
-          key={`active-${hoveredProject.id}`}
-          className={`floating-image floating-image-${hoveredProject.position}`}
+          className={`floating-image floating-image-${displayedProject.position}`}
+          style={{
+            opacity: imgOpacity,
+            transition: imgOpacity === 1 ? 'opacity 300ms ease' : 'opacity 150ms ease',
+          }}
         >
           <img
-            src={hoveredProject.images[0]}
-            alt={hoveredProject.title}
+            src={displayedProject.images[0]}
+            alt={displayedProject.title}
             className="floating-image-content"
           />
           <div className="scan-line"></div>
-        </div>
-      )}
-
-      {/* Exiting image — plays fade-out animation */}
-      {exitingProject && !isPastHero && (
-        <div
-          key={`exit-${exitingProject.id}`}
-          className={`floating-image floating-image-${exitingProject.position}`}
-        >
-          <div className="glitch-disperse">
-            <img
-              src={exitingProject.images[0]}
-              alt={exitingProject.title}
-              className="floating-image-content"
-            />
-          </div>
         </div>
       )}
 
@@ -123,8 +116,8 @@ function HomePage() {
               <React.Fragment key={project.id}>
                 <div
                   className={`project-item-compact ${hoveredProject?.id === project.id ? 'active' : ''} ${mobileExpandedIds.has(project.id) ? 'mobile-active' : ''}`}
-                  onMouseEnter={() => handleProjectSwitch(project)}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => showProject(project)}
+                  onMouseLeave={hideProject}
                   onClick={() => {
                     if (window.innerWidth < 768) {
                       setMobileExpandedIds(prev => {
