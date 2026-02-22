@@ -104,6 +104,7 @@ function HomePage() {
       <section className="hero" id="hero">
         {/* Left panel: tagline + about */}
         <div className="top-left-panel">
+          <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
           <div className="panel-tagline">
             <p>"petals, pixels, memory"</p>
             <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
