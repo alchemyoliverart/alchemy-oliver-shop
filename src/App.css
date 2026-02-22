@@ -50,6 +50,7 @@ body {
   z-index: 1000;
   border-bottom: 1px solid var(--cobalt-blue);
   height: 40px;
+  overflow: visible;
 }
 
 .nav-left {
