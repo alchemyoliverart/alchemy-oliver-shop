@@ -17,7 +17,7 @@ function Nav() {
             ←
           </button>
         )}
-        <span className="nav-label">Alchemy_oliver</span>
+        <img src="/Logo.png" alt="Alchemy Oliver" className="nav-logo" />
       </div>
       <div className="nav-center">
         <Link to="/contact" className="nav-contact">contact</Link>
