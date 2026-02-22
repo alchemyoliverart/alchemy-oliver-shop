@@ -214,7 +214,10 @@ function HomePage() {
             </p>
           </div>
 
-          <img src="/Logo blue.png" alt="Alchemy Oliver" className="about-logo" />
+          <div className="about-images">
+            <img src="/The_innocent_1.jpeg" alt="The innocent 1" className="about-image" />
+            <img src="/The_innocent_2.jpeg" alt="The innocent 2" className="about-image" />
+          </div>
         </div>
       </section>
 
