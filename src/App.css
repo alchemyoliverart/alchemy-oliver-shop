@@ -379,8 +379,14 @@ body {
   font-weight: 400;
   font-style: italic;
   margin-bottom: 0.5rem;
-  color: var(--cobalt-blue);
+  color: #fff;
   text-transform: lowercase;
+  background: linear-gradient(104deg, transparent 0.5%, var(--cobalt-blue) 1.5%, var(--cobalt-blue) 98%, transparent 99%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 50%;
+  padding: 3px 6px;
+  display: inline-block;
 }
 
 .about-images {
@@ -598,8 +604,14 @@ body {
   font-size: 0.75rem;
   font-weight: 400;
   font-style: italic;
-  color: var(--cobalt-blue);
+  color: #fff;
   margin-bottom: 0.75rem;
+  background: linear-gradient(104deg, transparent 0.5%, var(--cobalt-blue) 1.5%, var(--cobalt-blue) 98%, transparent 99%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 50%;
+  padding: 3px 6px;
+  display: inline-block;
 }
 
 .contact-intro {
