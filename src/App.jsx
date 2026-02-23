@@ -108,7 +108,7 @@ function HomePage() {
         <div className="top-left-panel">
           <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
           <div className="panel-tagline">
-            <p>"petals, pixels, memory"</p>
+            <p>'petals, pixels, memory'</p>
             <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
           </div>
           <div className="panel-about">
@@ -150,7 +150,7 @@ function HomePage() {
                       e.stopPropagation();
                       navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
                     }}
-                  >enquire →</span>
+                  >→</span>
                 </div>
                 {mobileExpandedIds.has(project.id) && (
                   <div className="mobile-project-image">
