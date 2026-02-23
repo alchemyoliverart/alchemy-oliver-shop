@@ -112,7 +112,7 @@ function HomePage() {
             <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
           </div>
           <div className="panel-about">
-            <p>i gather flowers from passing moments<br />and preserve them in light through scanning and digital layering,<br />creating quiet archives of memory and impermanence.</p>
+            <p>i gather flowers from passing moments<br />and preserve them in light through scanning and digital layering,<br />creating quiet archives of<br />memory and impermanence.</p>
           </div>
         </div>
 
