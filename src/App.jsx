@@ -135,6 +135,7 @@ function HomePage() {
               <React.Fragment key={project.id}>
                 <div
                   className={`project-item-compact ${hoveredProject?.id === project.id ? 'active' : ''} ${mobileExpandedIds.has(project.id) ? 'mobile-active' : ''}`}
+                  role="button"
                   onMouseEnter={() => showProject(project)}
                   onMouseLeave={hideProject}
                   onClick={() => {
@@ -154,6 +155,7 @@ function HomePage() {
                   {project.soldOut && <span className="project-sold">sold</span>}
                   <span
                     className="project-inquire"
+                    role="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
@@ -280,7 +282,7 @@ function App() {
 
   useEffect(() => {
     const handleClick = (e) => {
-      if (e.target.closest('a, button')) {
+      if (e.target.closest('a, button, select, [role="button"]')) {
         playMacClick();
       }
     };

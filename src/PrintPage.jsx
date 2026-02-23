@@ -43,6 +43,7 @@ function PrintPage() {
                 src={src}
                 alt={`${project.title} view ${i + 1}`}
                 className={`print-thumb ${selectedThumb === i ? 'active' : ''}`}
+                role="button"
                 onClick={() => setSelectedThumb(i)}
               />
             ))}
@@ -103,6 +104,7 @@ function PrintPage() {
             <div
               key={p.id}
               className="other-print-card"
+              role="button"
               onClick={() => navigate(`/print/${p.id}`, { state: { direction: 'forward' } })}
             >
               <img src={p.images[0]} alt={p.title} className="other-print-img" />
