@@ -78,7 +78,7 @@ function PrintPage() {
 
           {project.soldOut
             ? <span className="dm-button dm-button-sold">sold out</span>
-            : <Link to="/contact" className="dm-button">enquire</Link>
+            : <Link to="/contact" className="dm-button">purchase</Link>
           }
           <div className="print-fine-print-group">
             <p className="print-fine-print">

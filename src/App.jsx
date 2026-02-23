@@ -150,7 +150,7 @@ function HomePage() {
                       e.stopPropagation();
                       navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
                     }}
-                  >inquire →</span>
+                  >enquire →</span>
                 </div>
                 {mobileExpandedIds.has(project.id) && (
                   <div className="mobile-project-image">
