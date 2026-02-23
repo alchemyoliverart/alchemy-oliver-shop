@@ -247,6 +247,7 @@ body {
   height: 100%;
   object-fit: cover;
   border: 1px solid var(--cobalt-blue);
+  transform: scale(1.08);
 }
 
 .scan-line {

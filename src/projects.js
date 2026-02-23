@@ -34,6 +34,18 @@ const projects = [
     description: 'a bloom breaking apart in light,\neach petal drifting into signal and noise.\n\nwhat remains\nis not the flower itself,\nbut the feeling of it.',
     soldOut: false,
   },
+  {
+    id: 4,
+    title: 'home_grown01',
+    images: [
+      '/HomeGrown.jpg',
+      '/Home_Grown01.jpg',
+      '/homegrown03.JPG',
+    ],
+    position: 'bottom-right',
+    description: '',
+    soldOut: false,
+  },
 ];
 
 export default projects;
