@@ -112,7 +112,7 @@ function HomePage() {
             <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
           </div>
           <div className="panel-about">
-            <p>i gather flowers from passing moments<br />and preserve them in light through scanning and<br />digital layering, creating<br />quiet archives of<br />memory and impermanence.</p>
+            <p>i gather flowers from passing moments<br />and preserve them in light through scanning and<br />digital layering, creating quiet archives<br />of memory and impermanence.</p>
           </div>
         </div>
 
@@ -167,7 +167,6 @@ function HomePage() {
           <div className="ordering-header">ordering</div>
           <p className="ordering-text">print orders are now back open for 2026.</p>
           <p className="ordering-text">available as unframed prints or professionally framed.</p>
-          <p className="ordering-text">each arrangement is either created just for you, or drawn from my own life — moments lived, memories held — re-imagined as florals that don't fade.</p>
         </div>
 
         </div>{/* end hero-right-panels */}
