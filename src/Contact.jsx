@@ -17,7 +17,7 @@ function ContactPage() {
       <h1 className="contact-heading">contact</h1>
 
       <p className="contact-intro">
-        i welcome enquiries for commissions, collectors, and creative collaborations.
+        i welcome enquiries for commissions, collections, and creative collaborations.
         if you'd like to work together or have any questions about the work,
         please get in touch via the form below or email:{' '}
         <a href="mailto:atomic.alchemyo@gmail.com" className="contact-email">atomic.alchemyo@gmail.com</a>
