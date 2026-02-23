@@ -166,7 +166,7 @@ function HomePage() {
         <div className="ordering-box">
           <div className="ordering-header">ordering</div>
           <p className="ordering-text">print orders are now open for 2026.</p>
-          <p className="ordering-text">available as unframed prints or professionally framed.</p>
+          <p className="ordering-text">available unframed or professionally framed.</p>
         </div>
 
         </div>{/* end hero-right-panels */}
