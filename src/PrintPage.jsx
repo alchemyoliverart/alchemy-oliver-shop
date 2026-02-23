@@ -85,8 +85,7 @@ function PrintPage() {
               all prints are unframed by default.<br />
               framing can be arranged on request<br />
               and quoted individually depending on size and style.<br />
-              each print is hand-signed<br />
-              and comes with a certificate of authenticity.
+              each print is a limited edition print, hand signed and comes with a certificate of authenticity.
             </p>
             <p className="print-fine-print">
               all prints are professionally produced using archival pigment inks<br />
