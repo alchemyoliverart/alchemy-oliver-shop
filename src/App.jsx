@@ -112,7 +112,7 @@ function HomePage() {
             <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
           </div>
           <div className="panel-about">
-            <p>i gather flowers from passing moments<br />and preserve them in light through scanning and<br />digital layering, creating quiet archives<br />of memory and impermanence.</p>
+            <p>i gather flowers from passing moments<br />and preserve them in light<br />through scanning and digital layering,<br />creating quiet archives<br />of memory and impermanence.</p>
           </div>
         </div>
 
@@ -165,7 +165,7 @@ function HomePage() {
         {/* Ordering box */}
         <div className="ordering-box">
           <div className="ordering-header">ordering</div>
-          <p className="ordering-text">print orders are now back open for 2026.</p>
+          <p className="ordering-text">print orders are now open for 2026.</p>
           <p className="ordering-text">available as unframed prints or professionally framed.</p>
         </div>
 
