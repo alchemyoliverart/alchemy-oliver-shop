@@ -79,6 +79,14 @@ function HomePage() {
 
   return (
     <div className="app">
+      {/* Preload all project images so hover is instant */}
+      <div style={{ display: 'none' }} aria-hidden="true">
+        {projects.map((project) =>
+          project.images.map((src, i) => (
+            <img key={`${project.id}-${i}`} src={src} alt="" />
+          ))
+        )}
+      </div>
       {/* Bottom layer — outgoing image, fades out slowly */}
       {bottomProject && !isPastHero && (
         <div
