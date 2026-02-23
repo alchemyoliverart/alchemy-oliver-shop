@@ -197,10 +197,10 @@ function HomePage() {
             </p>
             <p className="about-paragraph">
               engaging themes of grief, light, and transformation,
-              i describe my process as a form of "fragmented reflection" —
+              i describe my process as a form of 'fragmented reflection' —
               a way of holding onto fleeting moments
               and creating visual archives of what cannot remain.
-              my work seeks to evoke a sense of tranquillity, awe,
+              my work seeks to evoke a sense of tranquility, awe,
               and quiet reverence for the natural world,
               while exploring the subtle harmony that can emerge
               from the intersection of art, technology, and botany.

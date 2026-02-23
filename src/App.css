@@ -154,9 +154,10 @@ body {
 }
 
 .panel-logo {
-  width: 200px;
+  width: 160px;
   height: auto;
   display: block;
+  margin-bottom: 0.75rem;
 }
 
 /* Compact Projects Menu */
