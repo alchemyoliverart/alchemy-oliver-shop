@@ -190,41 +190,16 @@ function HomePage() {
           <div className="about-text">
             <h2 className="section-title">about</h2>
             <p className="about-paragraph">
-              i am a multidisciplinary artist working across digital collage, photography, and poetic text.
-              my practice explores fragmented memory through scanned flora, soft textures, and layered imagery.
-              gathering flowers from walks, gardens, and fleeting encounters with the natural world,
-              i form an intimate connection with each botanical fragment.
-              every bloom carries its own story —
-              a quiet trace of time, presence, and impermanence.
+              i am a multidisciplinary artist working across digital collage, photography, and poetic text. my practice explores fragmented memory through scanned flora, soft textures, and layered imagery. gathering flowers from walks, gardens, and fleeting encounters with the natural world, i form an intimate connection with each botanical fragment. every bloom carries its own story - a quiet trace of time, presence, and impermanence.
             </p>
             <p className="about-paragraph">
-              using a flatbed scanner as my primary tool,
-              these delicate forms are preserved directly in light,
-              capturing intricate details and textures in a suspended space
-              between presence and disappearance.
-              through digital manipulation and layering,
-              they are transformed into luminous compositions
-              that exist between the organic and the digital.
+              working with a flatbed scanner, these delicate forms are preserved directly in light, capturing intricate details and textures in a suspended space between presence and disappearance. through digital manipulation and layering, they are transformed into luminous compositions that exist between the organic and the digital.
             </p>
             <p className="about-paragraph">
-              engaging themes of grief, light, and transformation,
-              i describe my process as a form of 'fragmented reflection' —
-              a way of holding onto fleeting moments
-              and creating visual archives of what cannot remain.
-              my work seeks to evoke a sense of tranquility, awe,
-              and quiet reverence for the natural world,
-              while exploring the subtle harmony that can emerge
-              from the intersection of art, technology, and botany.
+              engaging themes of grief, light, and transformation, i describe my process as a form of 'fragmented reflection' - a way of holding onto fleeting moments and creating visual archives of what cannot remain. my work seeks to evoke a sense of tranquility, awe, and quiet reverence for the natural world, while exploring the subtle harmony that can emerge from the intersection of art, technology, and botany.
             </p>
             <p className="about-paragraph">
-              i hold a bachelor of fine arts from monash university,
-              including study abroad in prato, italy (2013).
-              i am interested in the space where nature meets technology —
-              where something living becomes pixel,
-              where a fleeting moment becomes an archive.
-              each work acts as a quiet act of preservation.
-              a way of holding onto light.
-              a way of remembering.
+              i hold a bachelor of fine arts from monash university, including study abroad in prato, italy (2013). i am drawn to the space where nature meets technology - where something living becomes pixel, where a fleeting moment becomes an archive. each work is a quiet act of preservation. a way of holding onto light.
             </p>
           </div>
 
