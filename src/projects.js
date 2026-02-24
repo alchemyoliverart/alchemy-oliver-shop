@@ -46,6 +46,19 @@ const projects = [
     description: '',
     soldOut: false,
   },
+  {
+    id: 5,
+    title: 'oh_poppies_polaroid',
+    images: [
+      '/Poppies2_A0.jpg',
+      '/Poppiesa02.JPG',
+      '/Poppiess2.jpg',
+      '/poppies2_a0.png',
+    ],
+    position: 'top-left',
+    description: '',
+    soldOut: false,
+  },
 ];
 
 export default projects;
