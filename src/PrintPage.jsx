@@ -83,10 +83,10 @@ function PrintPage() {
           }
           <div className="print-fine-print-group">
             <p className="print-fine-print">
-              all prints are unframed by default. framing can be arranged on request and quoted individually depending on size and style. each print is a limited-edition print, individually hand-signed and comes with a certificate of authenticity.
+              all prints are unframed (framing available on request, quoted by size and style). each is a limited-edition, hand-signed print with a certificate of authenticity.
             </p>
             <p className="print-fine-print">
-              all prints are professionally produced using archival pigment inks on museum-grade gold fibre pearl baryta paper. this premium fine-art paper offers exceptional colour depth, rich blacks, and long-term archival stability, ensuring each artwork is made to last for generations.
+              printed with archival pigment inks on museum-grade baryta paper for exceptional colour, deep blacks, and long-term stability.
             </p>
             <p className="print-fine-print">
               orders are fulfilled with care. from printing to signing to packaging, each piece is given the time it deserves. typically 2–3 weeks before despatch.
