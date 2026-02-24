@@ -30,11 +30,9 @@ function ContactPage() {
 
       <div className="contact-section">
         <h2 className="contact-subheading">commissions</h2>
-        <p className="contact-text">i offer bespoke commissions for collectors, interiors, and creative collaborations.</p>
-        <p className="contact-text">each work begins with conversation — exploring colour, botanical elements, atmosphere, and the story or space the piece will live within.</p>
-        <p className="contact-text">flowers may be gathered in response to a place, a memory, or a moment, allowing the final work to hold a deeply personal connection.</p>
-        <p className="contact-text">i also collaborate with brands and creative partners on licensed designs, adapted prints, and site-specific installations.</p>
-        <p className="contact-text">each project is approached with care, ensuring the work remains both emotionally authentic and true to the quiet language of my practice.</p>
+        <p className="contact-text">i offer bespoke commissions for individuals, interiors, and creative collaborations. each project begins with a conversation - exploring colour, botanical elements, atmosphere, and the story or space the work will inhabit.</p>
+        <p className="contact-text">flowers may be gathered in response to a place, a memory, or a moment, so that the finished piece carries something personal within it.</p>
+        <p className="contact-text">i also work with brands and creative partners on licensed designs, adapted prints, and site-specific installations - always with care, and always in keeping with the quiet language of my practice.</p>
       </div>
 
       <form className="contact-form" onSubmit={handleSubmit}>
