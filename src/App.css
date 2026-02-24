@@ -762,7 +762,7 @@ body {
 }
 
 .print-title {
-  font-size: 1.25rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--cobalt-blue);
 }
@@ -781,7 +781,7 @@ body {
 }
 
 .print-price {
-  font-size: 1.25rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--cobalt-blue);
 }
