@@ -538,10 +538,39 @@ body {
 
 /* About */
 .about {
+  position: relative;
   min-height: 60vh;
   padding: 4rem 3rem;
   background: rgb(240, 238, 237);
   border-top: 1px solid #0000FF;
+}
+
+.close-prints-tab {
+  position: absolute;
+  top: 0;
+  left: 3rem;
+  transform: translateY(-100%);
+  background: #0000ff;
+  color: #fff;
+  border: none;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  font-size: 0.75rem;
+  font-style: italic;
+  text-transform: lowercase;
+  padding: 4px 8px;
+  line-height: 1.4;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.close-prints-tab:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 767px) {
+  .close-prints-tab {
+    left: 1.5rem;
+  }
 }
 
 .about-content {

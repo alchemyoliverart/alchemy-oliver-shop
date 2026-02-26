@@ -201,6 +201,17 @@ function HomePage() {
 
       {/* About */}
       <section className="about" id="about" ref={aboutRef}>
+        {(collageImages.length > 0 || mobileExpandedIds.size > 0) && (
+          <button
+            className="close-prints-tab"
+            onClick={() => {
+              setCollageImages([]);
+              setMobileExpandedIds(new Set());
+            }}
+          >
+            close prints
+          </button>
+        )}
         <div className="about-content">
           <div className="about-text">
             <h2 className="section-title">about</h2>
