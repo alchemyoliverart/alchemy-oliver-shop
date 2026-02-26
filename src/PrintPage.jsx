@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import projects from './projects.js';
 
@@ -7,6 +7,24 @@ function PrintPage() {
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState('A2');
   const [selectedThumb, setSelectedThumb] = useState(0);
+  const touchStartX = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e, total) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) {
+      setSelectedThumb(prev =>
+        delta > 0
+          ? Math.min(prev + 1, total - 1)
+          : Math.max(prev - 1, 0)
+      );
+    }
+    touchStartX.current = null;
+  };
 
   const prices = { A3: 280, A2: 400, A1: 650 };
 
@@ -28,7 +46,11 @@ function PrintPage() {
 
         {/* Left — image gallery */}
         <div className="print-left">
-          <div className="print-detail-image-wrap">
+          <div
+            className="print-detail-image-wrap"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={(e) => handleTouchEnd(e, thumbnails.length)}
+          >
             <img
               src={thumbnails[selectedThumb]}
               alt={project.title}
