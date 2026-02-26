@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import projects from './projects.js';
+import { useCart } from './CartContext.jsx';
 
 function PrintPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState('A2');
   const [selectedThumb, setSelectedThumb] = useState(0);
-  const [purchasing, setPurchasing] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
   const touchStartX = useRef(null);
+  const { addItem } = useCart();
 
   const prices = { A3: 280, A2: 400, A1: 650 };
   const currentPrice = prices[selectedSize];
@@ -31,26 +34,17 @@ function PrintPage() {
     touchStartX.current = null;
   };
 
-  const handlePurchase = async () => {
-    setPurchasing(true);
-    try {
-      const res = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: project.title,
-          size: selectedSize,
-          amount: prices[selectedSize],
-          printId: project.id,
-          imageUrl: window.location.origin + project.images[0],
-        }),
-      });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-    } catch (err) {
-      console.error(err);
-      setPurchasing(false);
-    }
+  const handleAddToCart = () => {
+    addItem({
+      id: project.id,
+      title: project.title,
+      size: selectedSize,
+      price: prices[selectedSize],
+      image: project.images[0],
+      quantity,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   if (!project) {
@@ -114,7 +108,7 @@ function PrintPage() {
             <div className="print-price">${currentPrice}</div>
 
             <div className="option-group">
-              <div className="option-label">Size</div>
+              <div className="option-label">size</div>
               <div className="option-buttons">
                 {['A3', 'A2', 'A1'].map(size => (
                   <button
@@ -128,12 +122,27 @@ function PrintPage() {
               </div>
             </div>
 
+            <div className="option-group">
+              <div className="option-label">quantity</div>
+              <div className="option-buttons">
+                {[1, 2, 3, 4, 5].map(n => (
+                  <button
+                    key={n}
+                    className={`option-btn ${quantity === n ? 'active' : ''}`}
+                    onClick={() => setQuantity(n)}
+                  >
+                    {n}
+                  </button>
+                ))}
+              </div>
+            </div>
+
           </div>
 
           {project.soldOut
             ? <span className="dm-button dm-button-sold">sold out</span>
-            : <button className="dm-button" onClick={handlePurchase} disabled={purchasing}>
-                {purchasing ? 'loading...' : 'purchase'}
+            : <button className="dm-button" onClick={handleAddToCart}>
+                {added ? 'added to cart ✓' : 'add to cart'}
               </button>
           }
           <div className="print-fine-print-group">

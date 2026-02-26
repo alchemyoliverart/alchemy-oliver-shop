@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from './CartContext.jsx';
 
 function CheckoutSuccess() {
+  const { clearCart } = useCart();
+  useEffect(() => { clearCart(); }, []);
+
   return (
     <div className="contact-page" style={{ textAlign: 'center' }}>
       <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" />
