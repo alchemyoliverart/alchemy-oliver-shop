@@ -6,7 +6,7 @@ module.exports = async function handler(req, res) {
   }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  const { title, size, amount, printId } = req.body;
+  const { title, size, amount, printId, imageUrl } = req.body;
   const origin = req.headers.origin || 'https://alchemy-oliver-shop.vercel.app';
 
   try {
@@ -18,6 +18,7 @@ module.exports = async function handler(req, res) {
           product_data: {
             name: `${title} — ${size}`,
             description: 'Limited edition fine art print, hand-signed with certificate of authenticity.',
+            ...(imageUrl ? { images: [imageUrl] } : {}),
           },
           unit_amount: amount * 100,
         },

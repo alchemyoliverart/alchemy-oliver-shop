@@ -42,6 +42,7 @@ function PrintPage() {
           size: selectedSize,
           amount: prices[selectedSize],
           printId: project.id,
+          imageUrl: window.location.origin + project.images[0],
         }),
       });
       const data = await res.json();
