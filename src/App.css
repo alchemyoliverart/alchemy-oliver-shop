@@ -279,6 +279,49 @@ body {
 .floating-image-bottom-center { bottom: 12%; left: 50%; transform: translateX(-50%); }
 .floating-image-center-right  { top: 35%; right: 10%; }
 
+/* Collage Images — desktop click-based mood board */
+.collage-wrapper {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.collage-wrapper.dragging {
+  cursor: grabbing;
+}
+
+.collage-image {
+  transform: rotate(var(--img-rotation));
+  transition: transform 0.15s ease;
+  line-height: 0;
+}
+
+.collage-wrapper:hover .collage-image {
+  transform: rotate(var(--img-rotation)) scale(1.04);
+}
+
+.collage-wrapper.dragging .collage-image {
+  transition: none;
+  transform: rotate(var(--img-rotation)) scale(1.02);
+}
+
+.collage-image-content {
+  max-width: 380px;
+  max-height: 480px;
+  width: auto;
+  height: auto;
+  display: block;
+  border: 1px solid var(--cobalt-blue);
+  box-shadow: 3px 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 767px) {
+  .collage-wrapper {
+    display: none !important;
+  }
+}
+
 /* Glitch Effects — CRT channel separation */
 .glitch {
   animation: glitch-rgb 0.7s ease forwards;

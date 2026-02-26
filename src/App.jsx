@@ -10,17 +10,14 @@ import projects from './projects.js';
 import './App.css';
 
 function HomePage() {
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [isPastHero, setIsPastHero] = useState(false);
-  const [topProject, setTopProject] = useState(null);
-  const [topOpacity, setTopOpacity] = useState(0);
-  const [bottomProject, setBottomProject] = useState(null);
-  const [bottomOpacity, setBottomOpacity] = useState(0);
+  const [collageImages, setCollageImages] = useState([]);
+  const [draggingId, setDraggingId] = useState(null);
   const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
   const [polaroidFanned, setPolaroidFanned] = useState(false);
   const aboutRef = React.useRef(null);
   const navigate = useNavigate();
-  const cleanupTimer = React.useRef(null);
+  const dragging = React.useRef(null);
+  const hasDragged = React.useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,50 +34,61 @@ function HomePage() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsPastHero(window.scrollY > 0);
+    const handleMouseMove = (e) => {
+      if (!dragging.current) return;
+      const dx = e.clientX - dragging.current.startMouseX;
+      const dy = e.clientY - dragging.current.startMouseY;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasDragged.current = true;
+      const { id, startDragX, startDragY } = dragging.current;
+      setCollageImages(prev => prev.map(item =>
+        item.id === id
+          ? { ...item, dragX: startDragX + dx, dragY: startDragY + dy }
+          : item
+      ));
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleMouseUp = () => {
+      if (dragging.current) {
+        dragging.current = null;
+        setDraggingId(null);
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
   }, []);
 
-  const showProject = (project) => {
-    setHoveredProject(project);
-    clearTimeout(cleanupTimer.current);
-
-    if (topProject && topProject.id !== project.id) {
-      // Move current image to background (slow fade out), bring new one in on top
-      setBottomProject(topProject);
-      setBottomOpacity(1);
-      setTopProject(project);
-      setTopOpacity(0);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        setTopOpacity(1);
-        setBottomOpacity(0);
-      }));
-      // Unmount background image after it finishes fading
-      cleanupTimer.current = setTimeout(() => setBottomProject(null), 800);
-    } else if (!topProject) {
-      // Nothing shown yet — fade straight in
-      setTopProject(project);
-      requestAnimationFrame(() => requestAnimationFrame(() => setTopOpacity(1)));
-    }
+  const handleMouseDown = (e, item) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    hasDragged.current = false;
+    dragging.current = {
+      id: item.id,
+      startMouseX: e.clientX,
+      startMouseY: e.clientY,
+      startDragX: item.dragX || 0,
+      startDragY: item.dragY || 0,
+    };
+    setDraggingId(item.id);
   };
 
-  const hideProject = () => {
-    setHoveredProject(null);
-    clearTimeout(cleanupTimer.current);
-    setTopOpacity(0);
-    setBottomOpacity(0);
-    cleanupTimer.current = setTimeout(() => {
-      setTopProject(null);
-      setBottomProject(null);
-    }, 800);
+  const toggleCollage = (project) => {
+    setCollageImages(prev => {
+      if (prev.find(item => item.id === project.id)) {
+        return prev.filter(item => item.id !== project.id);
+      }
+      const rotation = (Math.random() * 24) - 12;
+      const top = 8 + Math.random() * 62;
+      const left = 5 + Math.random() * 55;
+      return [...prev, { id: project.id, src: project.images[0], title: project.title, rotation, top, left, dragX: 0, dragY: 0 }];
+    });
   };
 
   return (
     <div className="app">
-      {/* Preload all project images so hover is instant */}
+      {/* Preload all project images */}
       <div style={{ display: 'none' }} aria-hidden="true">
         {projects.map((project) =>
           project.images.map((src, i) => (
@@ -88,31 +96,30 @@ function HomePage() {
           ))
         )}
       </div>
-      {/* Bottom layer — outgoing image, fades out slowly */}
-      {bottomProject && !isPastHero && (
-        <div
-          key={`bottom-${bottomProject.id}`}
-          className={`floating-image floating-image-${bottomProject.position}`}
-          style={{ opacity: bottomOpacity, transition: 'opacity 800ms ease' }}
-        >
-          <img src={bottomProject.images[0]} alt={bottomProject.title} className="floating-image-content" />
-        </div>
-      )}
-
-      {/* Top layer — incoming image, fades in quickly on a fresh element per project */}
-      {topProject && !isPastHero && (
-        <div
-          key={`top-${topProject.id}`}
-          className={`floating-image floating-image-${topProject.position}`}
-          style={{ opacity: topOpacity, transition: 'opacity 350ms ease' }}
-        >
-          <img src={topProject.images[0]} alt={topProject.title} className="floating-image-content" />
-          <div className="scan-line"></div>
-        </div>
-      )}
 
       {/* Hero — first room */}
       <section className="hero" id="hero">
+        {/* Collage images — desktop only, built up by clicking print links */}
+        {collageImages.map((item, index) => (
+          <div
+            key={item.id}
+            className={`collage-wrapper${draggingId === item.id ? ' dragging' : ''}`}
+            style={{
+              top: `${item.top}%`,
+              left: `${item.left}%`,
+              transform: `translate(${item.dragX || 0}px, ${item.dragY || 0}px)`,
+              zIndex: draggingId === item.id ? 850 : 700 + index,
+            }}
+            onMouseDown={(e) => handleMouseDown(e, item)}
+            onClick={() => { if (!hasDragged.current) navigate(`/print/${item.id}`, { state: { direction: 'forward' } }); }}
+            role="link"
+            aria-label={`View ${item.title}`}
+          >
+            <div className="collage-image" style={{ '--img-rotation': `${item.rotation}deg` }}>
+              <img src={item.src} alt={item.title} className="collage-image-content" />
+            </div>
+          </div>
+        ))}
         {/* Left panel: tagline + about */}
         <div className="top-left-panel">
           <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
@@ -135,10 +142,8 @@ function HomePage() {
             {projects.map((project) => (
               <React.Fragment key={project.id}>
                 <div
-                  className={`project-item-compact ${hoveredProject?.id === project.id ? 'active' : ''} ${mobileExpandedIds.has(project.id) ? 'mobile-active' : ''}`}
+                  className={`project-item-compact ${collageImages.some(img => img.id === project.id) ? 'active' : ''} ${mobileExpandedIds.has(project.id) ? 'mobile-active' : ''}`}
                   role="button"
-                  onMouseEnter={() => showProject(project)}
-                  onMouseLeave={hideProject}
                   onClick={() => {
                     if (window.innerWidth < 768) {
                       setMobileExpandedIds(prev => {
@@ -147,7 +152,7 @@ function HomePage() {
                         return next;
                       });
                     } else {
-                      navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
+                      toggleCollage(project);
                     }
                   }}
                 >
