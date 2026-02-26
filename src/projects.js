@@ -50,7 +50,7 @@ const projects = [
     id: 5,
     title: 'oh_poppies_polaroid',
     images: [
-      '/poppies2_a01.jpg',
+      '/poppies2_ao1.jpg',
       '/Poppiess2.jpg',
       '/Poppiesa02.jpg',
       '/poppies2_a0_new.jpg',
