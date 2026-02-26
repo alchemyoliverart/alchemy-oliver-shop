@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import projects from './projects.js';
 
 function PrintPage() {
@@ -7,7 +7,12 @@ function PrintPage() {
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState('A2');
   const [selectedThumb, setSelectedThumb] = useState(0);
+  const [purchasing, setPurchasing] = useState(false);
   const touchStartX = useRef(null);
+
+  const prices = { A3: 280, A2: 400, A1: 650 };
+  const currentPrice = prices[selectedSize];
+  const project = projects.find(p => p.id === parseInt(id));
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -26,11 +31,26 @@ function PrintPage() {
     touchStartX.current = null;
   };
 
-  const prices = { A3: 280, A2: 400, A1: 650 };
-
-  const currentPrice = prices[selectedSize];
-
-  const project = projects.find(p => p.id === parseInt(id));
+  const handlePurchase = async () => {
+    setPurchasing(true);
+    try {
+      const res = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: project.title,
+          size: selectedSize,
+          amount: prices[selectedSize],
+          printId: project.id,
+        }),
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } catch (err) {
+      console.error(err);
+      setPurchasing(false);
+    }
+  };
 
   if (!project) {
     return <div className="print-page-missing">Print not found.</div>;
@@ -111,7 +131,9 @@ function PrintPage() {
 
           {project.soldOut
             ? <span className="dm-button dm-button-sold">sold out</span>
-            : <Link to="/contact" className="dm-button">purchase</Link>
+            : <button className="dm-button" onClick={handlePurchase} disabled={purchasing}>
+                {purchasing ? 'loading...' : 'purchase'}
+              </button>
           }
           <div className="print-fine-print-group">
             <p className="print-fine-print">

@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import Nav from './Nav.jsx';
 import PrintPage from './PrintPage.jsx';
 import ContactPage from './Contact.jsx';
+import CheckoutSuccess from './CheckoutSuccess.jsx';
 import projects from './projects.js';
 import './App.css';
 
@@ -283,7 +284,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact';
+  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout');
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
   return (
@@ -297,6 +298,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/print/:id" element={<PrintPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/checkout/success" element={<CheckoutSuccess />} />
         </Routes>
       </div>
       <Analytics />
