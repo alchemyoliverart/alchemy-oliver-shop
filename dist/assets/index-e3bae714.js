@@ -58,7 +58,7 @@ makes a new kind of shape.
 
 some things fade.
 others stay -
-just in different forms.`,soldOut:!1},{id:3,title:"floral_fragments",images:["/Generative Fill 2.jpg","/floral_fragments_framed.jpg"],position:"top-right",description:`a bloom breaking apart in light,
+just in different forms.`,soldOut:!1},{id:3,title:"floral_fragments",images:["/floral_fragments.jpg","/Generative Fill 2.jpg"],position:"top-right",description:`a bloom breaking apart in light,
 each petal drifting into signal and noise.
 
 what remains

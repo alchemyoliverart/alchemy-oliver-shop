@@ -27,8 +27,8 @@ const projects = [
     id: 3,
     title: 'floral_fragments',
     images: [
+      '/floral_fragments.jpg',
       '/Generative Fill 2.jpg',
-      '/floral_fragments_framed.jpg'
     ],
     position: 'top-right',
     description: 'a bloom breaking apart in light,\neach petal drifting into signal and noise.\n\nwhat remains\nis not the flower itself,\nbut the feeling of it.',
