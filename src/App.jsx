@@ -183,6 +183,11 @@ function HomePage() {
           </div>
         </div>
 
+        {/* Collage tip — desktop only */}
+        <div className="collage-tip">
+          🖱️ click the prints to place them — drag to rearrange. (desktop only)
+        </div>
+
         {/* Ordering box */}
         <div className="ordering-box">
           <div className="ordering-header">ordering</div>

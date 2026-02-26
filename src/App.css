@@ -298,6 +298,21 @@ body {
   z-index: 900;
 }
 
+.collage-tip {
+  background: var(--cobalt-blue);
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  padding: 0.5rem 0.75rem;
+  max-width: 300px;
+}
+
+@media (max-width: 767px) {
+  .collage-tip {
+    display: none;
+  }
+}
+
 .ordering-box {
   background: rgba(240, 238, 237, 0.95);
   padding: 1rem;
