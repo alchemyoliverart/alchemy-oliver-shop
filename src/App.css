@@ -868,6 +868,35 @@ body {
   opacity: 0.7;
 }
 
+/* Image dot indicators (mobile only) */
+.image-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .image-dots {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.75rem;
+  }
+
+  .image-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1px solid var(--cobalt-blue);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .image-dot.active {
+    background: var(--cobalt-blue);
+  }
+}
+
 /* Thumbnails */
 .print-thumbnails {
   display: flex;

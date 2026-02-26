@@ -58,6 +58,16 @@ function PrintPage() {
             />
             <div className="scan-line"></div>
           </div>
+          <div className="image-dots">
+            {thumbnails.map((_, i) => (
+              <button
+                key={i}
+                className={`image-dot ${selectedThumb === i ? 'active' : ''}`}
+                onClick={() => setSelectedThumb(i)}
+                aria-label={`Image ${i + 1}`}
+              />
+            ))}
+          </div>
           <div className="print-thumbnails">
             {thumbnails.map((src, i) => (
               <img
