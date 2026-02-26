@@ -209,7 +209,7 @@ function HomePage() {
               setMobileExpandedIds(new Set());
             }}
           >
-            close prints
+            *close prints*
           </button>
         )}
         <div className="about-content">

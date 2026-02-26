@@ -548,16 +548,16 @@ body {
 .close-prints-tab {
   position: absolute;
   top: 0;
-  left: 3rem;
+  right: 3rem;
   transform: translateY(-100%);
   background: #0000ff;
   color: #fff;
   border: none;
   font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-style: italic;
   text-transform: lowercase;
-  padding: 4px 8px;
+  padding: 0.5rem 0.75rem;
   line-height: 1.4;
   cursor: pointer;
   z-index: 5;
@@ -569,7 +569,7 @@ body {
 
 @media (max-width: 767px) {
   .close-prints-tab {
-    left: 1.5rem;
+    right: 1.5rem;
   }
 }
 
