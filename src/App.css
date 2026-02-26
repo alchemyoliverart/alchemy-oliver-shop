@@ -776,6 +776,14 @@ body {
     padding: 4rem 1.5rem;
   }
 
+  .cart-dropdown {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 3rem);
+    max-width: 300px;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 2.5rem;
