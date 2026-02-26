@@ -27,7 +27,7 @@ const projects = [
     id: 3,
     title: 'floral_fragments',
     images: [
-      '/floral_fragments.jpg',
+      '/Generative Fill 2.jpg',
       '/floral_fragments_framed.jpg'
     ],
     position: 'top-right',
@@ -40,7 +40,7 @@ const projects = [
     images: [
       '/HomeGrown.jpg',
       '/Home_Grown01.jpg',
-      '/homegrown03.JPG',
+      '/homegrown03.jpg',
     ],
     position: 'bottom-right',
     description: '',
@@ -51,9 +51,9 @@ const projects = [
     title: 'oh_poppies_polaroid',
     images: [
       '/Poppies2_A0.jpg',
-      '/Poppiesa02.JPG',
+      '/Poppiesa02.jpg',
       '/Poppiess2.jpg',
-      '/poppies2_a0.png',
+      '/poppies2_a0.jpg',
     ],
     position: 'top-left',
     description: '',
