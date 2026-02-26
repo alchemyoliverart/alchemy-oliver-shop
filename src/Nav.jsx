@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useCart } from './CartContext.jsx';
 
@@ -6,9 +6,20 @@ function Nav() {
   const location = useLocation();
   const navigate = useNavigate();
   const showBack = location.pathname.startsWith('/print/') || location.pathname === '/contact';
-  const { items, removeItem, total, count } = useCart();
+  const { items, removeItem, updateQuantity, total, count } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
+  const cartRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (cartRef.current && !cartRef.current.contains(e.target)) {
+        setCartOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleCheckout = async () => {
     if (items.length === 0) return;
@@ -53,12 +64,11 @@ function Nav() {
       </div>
       <div className="nav-right">
         <a href="https://instagram.com/alchemyoliver" target="_blank" rel="noopener noreferrer" className="nav-contact">instagram</a>
-        <div
-          className="nav-cart-wrapper"
-          onMouseEnter={() => setCartOpen(true)}
-          onMouseLeave={() => setCartOpen(false)}
-        >
-          <button className="nav-contact nav-cart-btn">
+        <div className="nav-cart-wrapper" ref={cartRef}>
+          <button
+            className="nav-contact nav-cart-btn"
+            onClick={() => setCartOpen(prev => !prev)}
+          >
             cart{count > 0 ? ` (${count})` : ''}
           </button>
           {cartOpen && (
@@ -73,7 +83,19 @@ function Nav() {
                         <img src={item.image} alt={item.title} className="cart-item-thumb" />
                         <div className="cart-item-info">
                           <span className="cart-item-title">{item.title}</span>
-                          <span className="cart-item-detail">{item.size} × {item.quantity}</span>
+                          <div className="cart-item-qty">
+                            <button
+                              className="cart-qty-btn"
+                              onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.quantity - 1); }}
+                            >−</button>
+                            <span className="cart-qty-num">{item.quantity}</span>
+                            <button
+                              className="cart-qty-btn"
+                              onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.quantity + 1); }}
+                              disabled={item.quantity >= 5}
+                            >+</button>
+                            <span className="cart-item-detail">{item.size}</span>
+                          </div>
                         </div>
                         <span className="cart-item-price">${item.price * item.quantity}</span>
                         <button

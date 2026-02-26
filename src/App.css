@@ -169,6 +169,47 @@ body {
   text-overflow: ellipsis;
 }
 
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.1rem;
+}
+
+.cart-qty-btn {
+  background: none;
+  border: 1px solid var(--cobalt-blue);
+  color: var(--cobalt-blue);
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+  font-size: 0.65rem;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cart-qty-btn:hover:not(:disabled) {
+  background: var(--cobalt-blue);
+  color: #fff;
+}
+
+.cart-qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cart-qty-num {
+  font-size: 0.7rem;
+  color: var(--cobalt-blue);
+  min-width: 12px;
+  text-align: center;
+}
+
 .cart-item-detail {
   font-size: 0.6rem;
   color: var(--text-secondary);
