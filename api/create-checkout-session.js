@@ -22,6 +22,7 @@ module.exports = async function handler(req, res) {
           unit_amount: amount * 100,
         },
         quantity,
+        adjustable_quantity: { enabled: true, minimum: 1, maximum: 5 },
       })),
       mode: 'payment',
       shipping_address_collection: {
