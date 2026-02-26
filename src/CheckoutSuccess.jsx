@@ -9,7 +9,7 @@ function CheckoutSuccess() {
   return (
     <div className="contact-page" style={{ textAlign: 'center' }}>
       <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" />
-      <h2 className="contact-heading">thank you</h2>
+      <h2 className="contact-heading">thank you ;')</h2>
       <p className="contact-intro">
         your order has been received. a confirmation has been sent to your email.
       </p>
