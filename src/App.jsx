@@ -164,7 +164,11 @@ function HomePage() {
                   >→</span>
                 </div>
                 {mobileExpandedIds.has(project.id) && (
-                  <div className="mobile-project-image">
+                  <div
+                    className="mobile-project-image"
+                    onClick={() => navigate(`/print/${project.id}`, { state: { direction: 'forward' } })}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <img src={project.images[0]} alt={project.title} />
                   </div>
                 )}
