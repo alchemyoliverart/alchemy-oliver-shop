@@ -255,6 +255,13 @@ body {
   text-align: center;
 }
 
+.cart-error {
+  font-size: 0.65rem;
+  color: #cc0000;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
 /* Top-Left Panel — lives inside hero, scrolls with it */
 .top-left-panel {
   position: absolute;

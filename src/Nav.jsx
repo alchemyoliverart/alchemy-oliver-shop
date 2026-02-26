@@ -9,6 +9,7 @@ function Nav() {
   const { items, removeItem, updateQuantity, total, count } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState(null);
   const cartRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function Nav() {
   const handleCheckout = async () => {
     if (items.length === 0) return;
     setCheckingOut(true);
+    setCheckoutError(null);
     try {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
@@ -39,9 +41,14 @@ function Nav() {
         }),
       });
       const data = await res.json();
-      if (data.url) window.location.href = data.url;
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setCheckoutError(data.error || 'something went wrong');
+        setCheckingOut(false);
+      }
     } catch (err) {
-      console.error(err);
+      setCheckoutError('could not reach checkout');
       setCheckingOut(false);
     }
   };
@@ -109,6 +116,9 @@ function Nav() {
                     <span>total</span>
                     <span>${total}</span>
                   </div>
+                  {checkoutError && (
+                    <p className="cart-error">{checkoutError}</p>
+                  )}
                   <button
                     className="dm-button cart-checkout-btn"
                     onClick={handleCheckout}
