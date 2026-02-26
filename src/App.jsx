@@ -89,6 +89,14 @@ function HomePage() {
 
   return (
     <div className="app">
+      {mobileExpandedIds.size > 0 && (
+        <button
+          className="close-prints-mobile"
+          onClick={() => setMobileExpandedIds(new Set())}
+        >
+          *close prints*
+        </button>
+      )}
       {/* Preload all project images */}
       <div style={{ display: 'none' }} aria-hidden="true">
         {projects.map((project) =>

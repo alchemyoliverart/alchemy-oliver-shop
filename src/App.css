@@ -573,6 +573,31 @@ body {
   }
 }
 
+.close-prints-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .close-prints-mobile {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0000ff;
+    color: #fff;
+    border: none;
+    font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
+    font-size: 0.65rem;
+    font-style: italic;
+    text-transform: lowercase;
+    padding: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
+
 .about-content {
   max-width: 1200px;
   margin: 0 auto;
