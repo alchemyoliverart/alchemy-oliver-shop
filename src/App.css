@@ -952,8 +952,8 @@ body {
 }
 
 .print-detail-image {
-  max-height: 80vh;
-  max-width: 100%;
+  height: 70vh;
+  width: 100%;
   object-fit: contain;
   border: 1px solid var(--cobalt-blue);
 }
