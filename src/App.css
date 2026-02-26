@@ -844,6 +844,15 @@ body {
   margin-bottom: 2rem;
 }
 
+.contact-ascii {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--cobalt-blue);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
 .contact-email {
   color: var(--cobalt-blue);
   text-decoration: none;

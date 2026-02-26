@@ -56,6 +56,10 @@ function ContactPage() {
         </div>
         <div className="form-group">
           <label className="form-label">message</label>
+          <pre className="contact-ascii">{`     ⣠⣀
+ ⢀⡀⢸⣹⢾⣴⠶⣄
+⣠⠤⣼⠋⣹⠀⢧⢏⣞⡦⠏
+⠢⣄⣀⣀⡏⠀⠈⠉⠀`}</pre>
           <textarea className="form-input form-textarea" name="message" value={form.message} onChange={handleChange} required />
         </div>
         <button type="submit" className="dm-button">send</button>
