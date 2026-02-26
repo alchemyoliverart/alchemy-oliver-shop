@@ -185,7 +185,7 @@ function HomePage() {
 
         {/* Collage tip — desktop only */}
         <div className="collage-tip">
-          🖱️ click the prints to place them — drag to rearrange. enjoy :,)
+          click the prints to place them — drag to rearrange. enjoy :,) have a little shake
         </div>
 
         {/* Ordering box */}
