@@ -58,10 +58,6 @@ function ContactPage() {
           <label className="form-label">message</label>
           <textarea className="form-input form-textarea" name="message" value={form.message} onChange={handleChange} required />
         </div>
-        <pre className="contact-ascii">{`     ⣠⣀
- ⢀⡀⢸⣹⢾⣴⠶⣄
-⣠⠤⣼⠋⣹⠀⢧⢏⣞⡦⠏
-⠢⣄⣀⣀⡏⠀⠈⠉⠀`}</pre>
         <button type="submit" className="dm-button">send</button>
       </form>
     </div>
