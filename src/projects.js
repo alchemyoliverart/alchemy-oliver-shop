@@ -4,7 +4,7 @@ const projects = [
     title: 'petals, pixels, and memory_orchid',
     images: [
       '/petels-Pixels-andmemory_orchid.jpg',
-      '/petels-pixels-andmemory_orchid.1.png',
+      '/petels-pixels-andmemory_orchid.1.jpg',
       '/petals-pixels-andmemory_orchid2Framed.jpg'
     ],
     position: 'center',
