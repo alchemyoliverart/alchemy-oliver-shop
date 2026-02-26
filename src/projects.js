@@ -53,7 +53,7 @@ const projects = [
       '/Poppies1_A0.jpg',
       '/Poppiess2.jpg',
       '/Poppiesa02.jpg',
-      '/poppies2_a0.jpg',
+      '/poppies2_a0_new.jpg',
     ],
     position: 'top-left',
     description: '',
