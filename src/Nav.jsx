@@ -61,7 +61,7 @@ function Nav() {
           onClick={() => navigate('/', { state: { direction: 'back' } })}
         >
           {showBack && <span className="nav-back">←</span>}
-          <span className="nav-label">Alchemy_oliver</span>
+          <span className="nav-label">alchemy_oliver</span>
         </button>
       </div>
       <div className="nav-center">
