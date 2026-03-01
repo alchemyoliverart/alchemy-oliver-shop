@@ -38,7 +38,7 @@ function ContactPage() {
       <div className="contact-section">
         <h2 className="contact-subheading">returns & refunds</h2>
         <p className="contact-text">each alchemy oliver piece is original, digitally handcrafted and printed to order, so all sales are final. we don't offer refunds or returns for change of mind.</p>
-        <p className="contact-text">if your order arrives damaged, contact us within 7 days at <a href="mailto:atomic.alchemyo@gmail.com" className="contact-email">atomic.alchemyo@gmail.com</a> or via the form below with your order number, photos of the item and packaging, and a description of the issue. we'll work with you to find a resolution.</p>
+        <p className="contact-text">if your order arrives damaged, email us directly at <a href="mailto:atomic.alchemyo@gmail.com" className="contact-email">atomic.alchemyo@gmail.com</a> within 7 days with your order number, photos of the item and packaging, and a description of the issue. you can also use the form below (subject: returns/refunds) but please send photos via direct email so they reach us. we'll work with you to find a resolution.</p>
         <p className="contact-text">nothing in this policy limits your rights under australian consumer law. thank you for supporting independent art and alchemy oliver.</p>
       </div>
 
@@ -58,6 +58,7 @@ function ContactPage() {
             <option value="commission">commission</option>
             <option value="framing">framing</option>
             <option value="collaboration">collaboration</option>
+            <option value="returns/refunds">returns/refunds</option>
             <option value="other">other</option>
           </select>
         </div>
