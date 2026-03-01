@@ -163,9 +163,9 @@ function HomePage() {
         <div className="top-left-panel">
           <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
           <div className="panel-poem">
-            <p>petals,<br />pixels,<br />and memory<br />—</p>
+            <p>'petals, pixels, and memory'</p>
             <p>a practice of preserving<br />light, memory,<br />and the quiet traces<br />of grief.</p>
-            <p>i gather flowers<br />from fleeting moments,<br />preserving them in light<br />through scanning<br />and digital layering —<br />quiet archives<br />of grief and impermanence.</p>
+            <p>i gather flowers<br />from fleeting moments,<br />preserving them in light<br />through scanning<br />and digital layering -<br />quiet archives<br />of grief and impermanence.</p>
           </div>
         </div>
 
