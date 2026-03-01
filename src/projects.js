@@ -43,7 +43,7 @@ const projects = [
       '/homegrown03.jpg',
     ],
     position: 'bottom-right',
-    description: '',
+    description: 'made when the world went quiet and the garden stayed.\n\ni picked what was left - warm stems, yesterday\'s light still clinging.\n\neach flower laid down slowly, not to preserve but to hold what couldn\'t be held.\n\nhome turned into light. stillness into proof that something remained.\n\nit feels like returning - to soil, to slowness, to something grown quietly while everything else was breaking.\n\nhome isn\'t always a place. sometimes it\'s a process. sometimes it\'s a flower held long enough to say: i\'m still here.',
     soldOut: false,
   },
   {
