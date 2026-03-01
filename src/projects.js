@@ -56,7 +56,7 @@ const projects = [
       '/poppies2_a0_new.jpg',
     ],
     position: 'top-left',
-    description: '',
+    description: 'poppies blur,\ncolour bends,\nmemory slips.\n\npressed once.\nseen once.\ngone, but not lost.',
     soldOut: false,
   },
 ];
