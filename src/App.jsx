@@ -164,7 +164,7 @@ function HomePage() {
           <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
           <div className="panel-poem">
             <p>
-              petals, pixels, and memory<br />
+              'petals, pixels, and memory'<br />
               <br />
               a practice of preserving<br />
               light, memory,<br />
