@@ -165,10 +165,12 @@ function HomePage() {
           <div className="panel-poem">
             <p>
               petals, pixels, and memory<br />
+              <br />
               a practice of preserving<br />
               light, memory,<br />
               and the quiet traces<br />
               of grief.<br />
+              <br />
               i gather flowers<br />
               from fleeting moments,<br />
               preserving them in light<br />
