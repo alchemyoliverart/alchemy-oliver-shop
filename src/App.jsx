@@ -165,10 +165,10 @@ function HomePage() {
           <div className="panel-poem">
             <p>
               'petals, pixels, and memory'<br />
-              <br />
               a practice of preservation -<br />
-              <span className="poem-indent">light, memory, grief.</span><br />
-              <br />
+              light,<br />
+              memory,<br />
+              grief.<br />
               flowers gathered<br />
               from moments already fading,<br />
               held in light<br />
