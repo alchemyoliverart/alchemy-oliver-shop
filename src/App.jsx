@@ -10,6 +10,36 @@ import CheckoutSuccess from './CheckoutSuccess.jsx';
 import projects from './projects.js';
 import './App.css';
 
+function SplashScreen({ onComplete }) {
+  const [displayed, setDisplayed] = useState('');
+  const [fading, setFading] = useState(false);
+  const text = "'petals, pixels, memory'";
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(interval);
+        setTimeout(() => {
+          setFading(true);
+          setTimeout(onComplete, 600);
+        }, 900);
+      }
+    }, 70);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className={`splash${fading ? ' splash-fade' : ''}`}>
+      <span className="splash-text">
+        {displayed}<span className="splash-cursor">_</span>
+      </span>
+    </div>
+  );
+}
+
 function HomePage() {
   const [collageImages, setCollageImages] = useState([]);
   const [draggingId, setDraggingId] = useState(null);
@@ -296,6 +326,7 @@ function App() {
   const location = useLocation();
   const direction = location.state?.direction;
   const [isGlitching, setIsGlitching] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -320,6 +351,7 @@ function App() {
 
   return (
     <div className={isGlitching && !isPrintPage ? 'glitch' : ''}>
+      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <ScrollToTop />
       {/* Shared nav */}
       <Nav />
