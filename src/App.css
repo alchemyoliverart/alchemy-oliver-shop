@@ -1075,6 +1075,14 @@ body {
   text-align: justify;
 }
 
+.print-description p {
+  margin-bottom: 0.75rem;
+}
+
+.print-description p:last-child {
+  margin-bottom: 0;
+}
+
 .print-options {
   display: flex;
   flex-direction: column;

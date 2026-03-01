@@ -101,7 +101,17 @@ function PrintPage() {
         <div className="print-right">
           <h1 className="print-title">{project.title}</h1>
           {project.description && (
-            <p className="print-description" style={{ whiteSpace: 'pre-line' }}>{project.description}</p>
+            <div className="print-description">
+              {project.description.split('\n\n').map((stanza, i) => (
+                <p key={i}>
+                  {stanza.split('\n').map((line, j, arr) => (
+                    <React.Fragment key={j}>
+                      {line}{j < arr.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </p>
+              ))}
+            </div>
           )}
 
           <div className="print-options">
