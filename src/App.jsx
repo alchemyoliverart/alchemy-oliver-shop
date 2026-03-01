@@ -162,12 +162,10 @@ function HomePage() {
         {/* Left panel: tagline + about */}
         <div className="top-left-panel">
           <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
-          <div className="panel-tagline">
-            <p>'petals, pixels, memory'</p>
-            <p>a practice of preserving light, memory, and the quiet traces of grief.</p>
-          </div>
-          <div className="panel-about">
-            <p>i gather flowers from passing moments<br />and preserve them in light<br />through scanning and digital layering,<br />creating quiet archives<br />of memory and impermanence.</p>
+          <div className="panel-poem">
+            <p>petals,<br />pixels,<br />and memory<br />—</p>
+            <p>a practice of preserving<br />light, memory,<br />and the quiet traces<br />of grief.</p>
+            <p>i gather flowers<br />from fleeting moments,<br />preserving them in light<br />through scanning<br />and digital layering —<br />quiet archives<br />of grief and impermanence.</p>
           </div>
         </div>
 
