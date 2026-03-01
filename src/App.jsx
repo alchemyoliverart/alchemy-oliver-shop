@@ -13,7 +13,7 @@ import './App.css';
 function SplashScreen({ onComplete }) {
   const [displayed, setDisplayed] = useState('');
   const [fading, setFading] = useState(false);
-  const text = "'petals, pixels, memory'";
+  const text = "'petals, pixels, and memory'";
 
   useEffect(() => {
     let i = 0;
