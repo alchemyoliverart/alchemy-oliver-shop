@@ -684,12 +684,10 @@ body {
 }
 
 .about-image {
-  flex: 1;
-  width: 0;
-  min-width: 0;
+  width: 100%;
+  max-width: 260px;
   height: auto;
   display: block;
-  object-fit: cover;
 }
 
 .about-paragraph {
@@ -849,7 +847,7 @@ body {
   }
 
   .about-image {
-    flex: 1;
+    max-width: 260px;
   }
 
   .polaroid-stack {
