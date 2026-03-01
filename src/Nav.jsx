@@ -56,15 +56,13 @@ function Nav() {
   return (
     <nav className="nav">
       <div className="nav-left">
-        {showBack && (
-          <button
-            className="nav-back"
-            onClick={() => navigate('/', { state: { direction: 'back' } })}
-          >
-            ←
-          </button>
-        )}
-        <span className="nav-label">Alchemy_oliver</span>
+        <button
+          className="nav-home"
+          onClick={() => navigate('/', { state: { direction: 'back' } })}
+        >
+          {showBack && <span className="nav-back">←</span>}
+          <span className="nav-label">Alchemy_oliver</span>
+        </button>
       </div>
       <div className="nav-center">
         <Link to="/contact" className="nav-contact">contact</Link>
