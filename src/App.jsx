@@ -166,18 +166,18 @@ function HomePage() {
             <p>
               'petals, pixels, and memory'<br />
               <br />
-              a practice of preserving<br />
-              light, memory,<br />
-              and the quiet traces<br />
-              of grief.<br />
+              a practice of preservation -<br />
+              light,<br />
+              memory,<br />
+              grief.<br />
               <br />
-              i gather flowers<br />
-              from fleeting moments,<br />
-              preserving them in light<br />
+              flowers gathered<br />
+              from moments already fading,<br />
+              held in light<br />
               through scanning<br />
-              and digital layering —<br />
-              quiet archives<br />
-              of grief and impermanence.
+              and digital layering.<br />
+              quiet records<br />
+              of impermanence.
             </p>
           </div>
         </div>
