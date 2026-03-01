@@ -169,6 +169,7 @@ function HomePage() {
               light,<br />
               memory,<br />
               grief.<br />
+              <br />
               flowers gathered<br />
               from moments already fading,<br />
               held in light<br />
