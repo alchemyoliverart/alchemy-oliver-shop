@@ -8,7 +8,7 @@ const projects = [
       '/petals-pixels-andmemory_orchid2Framed.jpg'
     ],
     position: 'center',
-    description: 'orchid studies, unraveled by light and time.\nslowly easing back into sharing again.\n\nsomething about the way light moves after shadow -\nhow softness can return,\nquietly, without asking.',
+    description: 'orchid studies,\nunraveled by light and time.\n\nslowly easing back\ninto sharing again.\n\nsomething about\nthe way light moves\nafter shadow -\nhow softness can return,\nquietly, without asking.',
     soldOut: false,
   },
   {
