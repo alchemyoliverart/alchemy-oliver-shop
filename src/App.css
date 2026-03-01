@@ -339,6 +339,10 @@ body {
   margin: 0;
 }
 
+.poem-indent {
+  padding-left: 1rem;
+}
+
 /* Right side stacked boxes */
 .hero-right-panels {
   position: absolute;
