@@ -37,17 +37,6 @@ module.exports = async function handler(req, res) {
         {
           shipping_rate_data: {
             type: 'fixed_amount',
-            fixed_amount: { amount: 0, currency: 'aud' },
-            display_name: 'Local Pickup',
-            delivery_estimate: {
-              minimum: { unit: 'business_day', value: 1 },
-              maximum: { unit: 'business_day', value: 3 },
-            },
-          },
-        },
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
             fixed_amount: { amount: 1500, currency: 'aud' },
             display_name: 'AU Standard',
             delivery_estimate: {
