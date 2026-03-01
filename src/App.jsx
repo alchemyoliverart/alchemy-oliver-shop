@@ -284,6 +284,14 @@ function playMacClick() {
   source.onended = () => ctx.close();
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   const location = useLocation();
   const direction = location.state?.direction;
@@ -312,6 +320,7 @@ function App() {
 
   return (
     <div className={isGlitching && !isPrintPage ? 'glitch' : ''}>
+      <ScrollToTop />
       {/* Shared nav */}
       <Nav />
 
