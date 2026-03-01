@@ -165,6 +165,7 @@ function HomePage() {
           <div className="panel-poem">
             <p>
               'petals, pixels, and memory'<br />
+              <br />
               a practice of preservation -<br />
               light,<br />
               memory,<br />
