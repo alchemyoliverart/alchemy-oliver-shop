@@ -31,7 +31,7 @@ const projects = [
       '/Generative Fill 2.jpg',
     ],
     position: 'top-right',
-    description: 'a bloom breaking apart in light,\neach petal drifting into signal and noise.\n\nwhat remains\nis not the flower itself,\nbut the feeling of it.',
+    description: 'a bloom\nbreaking apart\nin light,\n\neach petal\ndrifting into\nsignal and\nnoise.\n\nwhat remains\nis not the flower itself,\nbut the feeling of it.',
     soldOut: false,
   },
   {
