@@ -238,7 +238,7 @@ function HomePage() {
           </div>
 
           <div className="about-images">
-            <img src="/clarity-and-dehaze-1.jpg" alt="Clarity and dehaze 1" className="about-image" />
+            <img src="/me.png" alt="Alchemy Oliver" className="about-image" />
           </div>
         </div>
       </section>
