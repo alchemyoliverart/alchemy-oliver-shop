@@ -16,6 +16,9 @@ function CheckoutSuccess() {
       <p className="contact-intro">
         each print is hand-signed and carefully packaged. you can expect despatch within 2–3 weeks.
       </p>
+      <p className="contact-intro">
+        thank you for choosing to support an independent artist and small business — it truly means the world ✨
+      </p>
       <Link to="/" className="dm-button" style={{ marginTop: '1.5rem' }}>
         back to prints
       </Link>

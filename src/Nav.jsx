@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useCart } from './CartContext.jsx';
 
@@ -53,7 +54,7 @@ function Nav() {
     }
   };
 
-  return (
+  return createPortal(
     <nav className="nav">
       <div className="nav-left">
         <button
@@ -130,7 +131,8 @@ function Nav() {
           )}
         </div>
       </div>
-    </nav>
+    </nav>,
+    document.body
   );
 }
 

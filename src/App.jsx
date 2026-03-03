@@ -1,5 +1,6 @@
 // v2
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -40,10 +41,9 @@ function SplashScreen({ onComplete }) {
   );
 }
 
-function HomePage() {
+function HomePage({ mobileExpandedIds, setMobileExpandedIds }) {
   const [collageImages, setCollageImages] = useState([]);
   const [draggingId, setDraggingId] = useState(null);
-  const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
   const [polaroidFanned, setPolaroidFanned] = useState(false);
   const aboutRef = React.useRef(null);
   const navigate = useNavigate();
@@ -119,14 +119,6 @@ function HomePage() {
 
   return (
     <div className="app">
-      {mobileExpandedIds.size > 0 && (
-        <button
-          className="close-prints-mobile"
-          onClick={() => setMobileExpandedIds(new Set())}
-        >
-          *close prints*
-        </button>
-      )}
       {/* Preload all project images */}
       <div style={{ display: 'none' }} aria-hidden="true">
         {projects.map((project) =>
@@ -359,28 +351,39 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
   const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout');
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
   return (
-    <div className={isGlitching && !isPrintPage ? 'glitch' : ''}>
-      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
-      <ScrollToTop />
-      {/* Shared nav */}
+    <>
       <Nav />
+      {mobileExpandedIds.size > 0 && createPortal(
+        <button
+          className="close-prints-mobile"
+          onClick={() => setMobileExpandedIds(new Set())}
+        >
+          *close prints*
+        </button>,
+        document.body
+      )}
+      <div className={isGlitching && !isPrintPage ? 'glitch' : ''}>
+        {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
+        <ScrollToTop />
 
-      {/* Page content with slide transition */}
-      <div key={location.key} className={`page-transition ${transitionClass}`}>
-        <Routes location={location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/print/:id" element={<PrintPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/checkout/success" element={<CheckoutSuccess />} />
-        </Routes>
+        {/* Page content with slide transition */}
+        <div key={location.key} className={`page-transition ${transitionClass}`}>
+          <Routes location={location}>
+            <Route path="/" element={<HomePage mobileExpandedIds={mobileExpandedIds} setMobileExpandedIds={setMobileExpandedIds} />} />
+            <Route path="/print/:id" element={<PrintPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
+          </Routes>
+        </div>
       </div>
       <Analytics />
       <SpeedInsights />
-    </div>
+    </>
   );
 }
 
