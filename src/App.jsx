@@ -357,7 +357,7 @@ function App() {
 
   return (
     <>
-      <Nav />
+      {splashDone && <Nav />}
       {mobileExpandedIds.size > 0 && createPortal(
         <button
           className="close-prints-mobile"
