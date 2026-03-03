@@ -227,7 +227,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
 
         {/* Collage tip — desktop only */}
         <div className={`collage-tip${splashDone ? ' collage-tip-animate' : ''}`}>
-          click the prints to place them — drag to rearrange. enjoy :,)
+          click the prints to place them - drag to rearrange. enjoy :,)
         </div>
 
         {/* Ordering box */}
