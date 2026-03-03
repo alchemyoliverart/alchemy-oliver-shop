@@ -135,7 +135,7 @@ function PrintPage() {
             <div className="option-group">
               <div className="option-label">quantity</div>
               <div className="option-buttons">
-                {[1, 2, 3, 4, 5].map(n => (
+                {[1, 2, 3].map(n => (
                   <button
                     key={n}
                     className={`option-btn ${quantity === n ? 'active' : ''}`}
