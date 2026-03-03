@@ -235,7 +235,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds }) {
           <div className="ordering-header">ordering</div>
           <p className="ordering-text">print orders are now open for 2026.</p>
           <p className="ordering-text">available unframed or professionally framed.</p>
-          <p className="ordering-text">local pickup available — <span style={{cursor:'pointer', textDecoration:'underline'}} onClick={() => navigate('/contact')}>get in touch</span> to arrange.</p>
+          <p className="ordering-text">local pickup available - <span style={{cursor:'pointer', textDecoration:'underline'}} onClick={() => navigate('/contact')}>get in touch</span> to arrange.</p>
         </div>
 
         </div>{/* end hero-right-panels */}
