@@ -41,7 +41,7 @@ function SplashScreen({ onComplete }) {
   );
 }
 
-function HomePage({ mobileExpandedIds, setMobileExpandedIds }) {
+function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
   const [collageImages, setCollageImages] = useState([]);
   const [draggingId, setDraggingId] = useState(null);
   const [polaroidFanned, setPolaroidFanned] = useState(false);
@@ -226,7 +226,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds }) {
         </div>
 
         {/* Collage tip — desktop only */}
-        <div className="collage-tip">
+        <div className={`collage-tip${splashDone ? ' collage-tip-animate' : ''}`}>
           click the prints to place them — drag to rearrange. enjoy :,)
         </div>
 
@@ -374,7 +374,7 @@ function App() {
         {/* Page content with slide transition */}
         <div key={location.key} className={`page-transition ${transitionClass}`}>
           <Routes location={location}>
-            <Route path="/" element={<HomePage mobileExpandedIds={mobileExpandedIds} setMobileExpandedIds={setMobileExpandedIds} />} />
+            <Route path="/" element={<HomePage mobileExpandedIds={mobileExpandedIds} setMobileExpandedIds={setMobileExpandedIds} splashDone={splashDone} />} />
             <Route path="/print/:id" element={<PrintPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/checkout/success" element={<CheckoutSuccess />} />

@@ -374,6 +374,9 @@ body {
   line-height: 1.4;
   padding: 0.5rem 0.75rem;
   max-width: 300px;
+}
+
+.collage-tip.collage-tip-animate {
   animation: wobble 0.8s ease-in-out 1;
 }
 
