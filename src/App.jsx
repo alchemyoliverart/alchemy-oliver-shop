@@ -362,10 +362,14 @@ function App() {
   const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout');
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
+  useEffect(() => {
+    if (isPrintPage) setMobileExpandedIds(new Set());
+  }, [location.pathname]);
+
   return (
     <>
       {splashDone && <Nav />}
-      {mobileExpandedIds.size > 0 && createPortal(
+      {mobileExpandedIds.size > 0 && !isPrintPage && createPortal(
         <button
           className="close-prints-mobile"
           onClick={() => setMobileExpandedIds(new Set())}
