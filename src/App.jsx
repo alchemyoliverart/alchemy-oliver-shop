@@ -287,8 +287,16 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
   );
 }
 
-function playMacClick() {
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+let sharedAudioCtx = null;
+
+async function playMacClick() {
+  if (!sharedAudioCtx || sharedAudioCtx.state === 'closed') {
+    sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (sharedAudioCtx.state === 'suspended') {
+    await sharedAudioCtx.resume();
+  }
+  const ctx = sharedAudioCtx;
   const duration = 0.018;
 
   // Short filtered noise burst — the mechanical "tick"
@@ -316,7 +324,6 @@ function playMacClick() {
   gain.connect(ctx.destination);
   source.start();
   source.stop(ctx.currentTime + duration);
-  source.onended = () => ctx.close();
 }
 
 function ScrollToTop() {
