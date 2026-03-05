@@ -786,6 +786,42 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.footer-link {
+  font-size: 0.7rem;
+  color: var(--cobalt-blue);
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.footer-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Policy pages */
+.policy-page {
+  max-width: 680px;
+}
+
+.policy-back {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--cobalt-blue);
+  text-decoration: none;
+}
+
+.policy-back:hover {
+  text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-menu {
@@ -1393,4 +1429,58 @@ body {
   .print-right {
     padding: 2rem 1.5rem;
   }
+}
+
+/* 404 / Error Boundary */
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: var(--primary-bg);
+  color: var(--cobalt-blue);
+}
+
+.not-found-code {
+  font-size: 4rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.not-found-message {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.not-found-link {
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--cobalt-blue);
+  text-decoration: none;
+  text-transform: lowercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.not-found-link:hover {
+  text-decoration: underline;
+}
+
+/* Contact form feedback */
+.contact-form-error {
+  font-size: 0.75rem;
+  color: #cc0000;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.contact-form-success {
+  font-size: 0.8rem;
+  color: var(--cobalt-blue);
+  font-style: italic;
+  margin-top: 1rem;
 }

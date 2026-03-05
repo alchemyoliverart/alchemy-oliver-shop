@@ -1,18 +1,41 @@
 import React, { useState } from 'react';
 
+const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
+
 function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: 'print enquiry', message: '' });
+  const [status, setStatus] = useState(null); // null | 'sending' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    window.location.href = `mailto:atomic.alchemyo@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`name: ${form.name}\nemail: ${form.email}\n\n${form.message}`)}`;
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error || 'something went wrong — please try again.');
+        setStatus('error');
+      } else {
+        setStatus('success');
+        setForm({ name: '', email: '', subject: 'print enquiry', message: '' });
+      }
+    } catch {
+      setErrorMsg('could not reach the server — please try again or email directly.');
+      setStatus('error');
+    }
   };
 
   return (
     <div className="contact-page">
-      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" />
+      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
 
       <h1 className="contact-heading">contact</h1>
 
@@ -67,8 +90,17 @@ function ContactPage() {
           <label className="form-label">message</label>
           <textarea className="form-input form-textarea" name="message" value={form.message} onChange={handleChange} required />
         </div>
-        <button type="submit" className="dm-button">send</button>
+        {status === 'error' && (
+          <p className="contact-form-error">{errorMsg}</p>
+        )}
+        <button type="submit" className="dm-button" disabled={status === 'sending'}>
+          {status === 'sending' ? 'sending...' : 'send'}
+        </button>
       </form>
+
+      {status === 'success' && (
+        <p className="contact-form-success">message sent — i'll be in touch soon :)</p>
+      )}
     </div>
   );
 }

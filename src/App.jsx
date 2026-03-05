@@ -1,15 +1,21 @@
 // v2
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import Nav from './Nav.jsx';
 import PrintPage from './PrintPage.jsx';
 import ContactPage from './Contact.jsx';
 import CheckoutSuccess from './CheckoutSuccess.jsx';
+import NotFound from './NotFound.jsx';
+import PrivacyPolicy from './PrivacyPolicy.jsx';
+import RefundPolicy from './RefundPolicy.jsx';
+import Terms from './Terms.jsx';
 import projects from './projects.js';
 import './App.css';
+
+const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
 
 function SplashScreen({ onComplete }) {
   const [displayed, setDisplayed] = useState('');
@@ -123,7 +129,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
       <div style={{ display: 'none' }} aria-hidden="true">
         {projects.map((project) =>
           project.images.map((src, i) => (
-            <img key={`${project.id}-${i}`} src={src} alt="" />
+            <img key={`${project.id}-${i}`} src={src} alt="" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           ))
         )}
       </div>
@@ -147,13 +153,13 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
             aria-label={`View ${item.title}`}
           >
             <div className="collage-image" style={{ '--img-rotation': `${item.rotation}deg` }}>
-              <img src={item.src} alt={item.title} className="collage-image-content" />
+              <img src={item.src} alt={item.title} className="collage-image-content" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
             </div>
           </div>
         ))}
         {/* Left panel: tagline + about */}
         <div className="top-left-panel">
-          <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" />
+          <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           <div className="panel-poem">
             <p>
               'petals, pixels, and memory'<br />
@@ -217,7 +223,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
                     onClick={() => navigate(`/print/${project.id}`, { state: { direction: 'forward' } })}
                     style={{ cursor: 'pointer' }}
                   >
-                    <img src={project.images[0]} alt={project.title} />
+                    <img src={project.images[0]} alt={project.title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
                   </div>
                 )}
               </React.Fragment>
@@ -273,7 +279,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
           </div>
 
           <div className="about-images">
-            <img src="/me.png" alt="Alchemy Oliver" className="about-image" />
+            <img src="/me.png" alt="Alchemy Oliver" className="about-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           </div>
         </div>
       </section>
@@ -282,6 +288,11 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
       <footer className="footer">
         <p className="footer-text">© 2026 Alchemy Oliver</p>
         <p className="footer-text">Scanography and multi-media artist</p>
+        <div className="footer-links">
+          <Link to="/privacy-policy" className="footer-link">privacy policy</Link>
+          <Link to="/refund-policy" className="footer-link">refund policy</Link>
+          <Link to="/terms" className="footer-link">terms</Link>
+        </div>
       </footer>
     </div>
   );
@@ -359,7 +370,7 @@ function App() {
   }, []);
 
   const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
-  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout');
+  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout') || location.pathname === '/privacy-policy' || location.pathname === '/refund-policy' || location.pathname === '/terms';
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
   useEffect(() => {
@@ -389,6 +400,10 @@ function App() {
             <Route path="/print/:id" element={<PrintPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>

@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from './CartContext.jsx';
 
+const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
+
 function CheckoutSuccess() {
   const { clearCart } = useCart();
   useEffect(() => { clearCart(); }, []);
 
   return (
     <div className="contact-page" style={{ textAlign: 'center' }}>
-      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" />
+      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
       <h2 className="contact-heading">thank you ;')</h2>
       <p className="contact-intro">
         your order has been received. a confirmation has been sent to your email.

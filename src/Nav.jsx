@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useCart } from './CartContext.jsx';
 
+const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
+
 function Nav() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -86,7 +88,7 @@ function Nav() {
                   <div className="cart-items">
                     {items.map(item => (
                       <div key={`${item.id}-${item.size}`} className="cart-item">
-                        <img src={item.image} alt={item.title} className="cart-item-thumb" />
+                        <img src={item.image} alt={item.title} className="cart-item-thumb" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
                         <div className="cart-item-info">
                           <span className="cart-item-title">{item.title}</span>
                           <div className="cart-item-qty">

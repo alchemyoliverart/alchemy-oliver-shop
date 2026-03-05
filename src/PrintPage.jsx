@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import projects from './projects.js';
 import { useCart } from './CartContext.jsx';
 
+const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
+
 function PrintPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -70,6 +72,7 @@ function PrintPage() {
               src={thumbnails[selectedThumb]}
               alt={project.title}
               className="print-detail-image"
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }}
             />
             <div className="scan-line"></div>
           </div>
@@ -92,6 +95,7 @@ function PrintPage() {
                 className={`print-thumb ${selectedThumb === i ? 'active' : ''}`}
                 role="button"
                 onClick={() => setSelectedThumb(i)}
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }}
               />
             ))}
           </div>
@@ -184,7 +188,7 @@ function PrintPage() {
               role="button"
               onClick={() => navigate(`/print/${p.id}`, { state: { direction: 'forward' } })}
             >
-              <img src={p.images[0]} alt={p.title} className="other-print-img" />
+              <img src={p.images[0]} alt={p.title} className="other-print-img" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
               <div className="other-print-title">{p.title}</div>
             </div>
           ))}
