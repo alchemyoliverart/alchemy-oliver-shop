@@ -22,7 +22,7 @@ export function CartProvider({ children }) {
       if (existing) {
         return prev.map(i =>
           i.id === item.id && i.size === item.size
-            ? { ...i, quantity: Math.min(5, i.quantity + item.quantity) }
+            ? { ...i, quantity: Math.min(3, i.quantity + item.quantity) }
             : i
         );
       }
@@ -41,7 +41,7 @@ export function CartProvider({ children }) {
     }
     setItems(prev => prev.map(i =>
       i.id === id && i.size === size
-        ? { ...i, quantity: Math.min(5, qty) }
+        ? { ...i, quantity: Math.min(3, qty) }
         : i
     ));
   };
