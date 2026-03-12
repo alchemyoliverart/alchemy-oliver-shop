@@ -95,6 +95,7 @@ function PrintPage() {
                 className={`print-thumb ${selectedThumb === i ? 'active' : ''}`}
                 role="button"
                 onClick={() => setSelectedThumb(i)}
+                loading="lazy"
                 onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }}
               />
             ))}
@@ -188,7 +189,7 @@ function PrintPage() {
               role="button"
               onClick={() => navigate(`/print/${p.id}`, { state: { direction: 'forward' } })}
             >
-              <img src={p.images[0]} alt={p.title} className="other-print-img" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+              <img src={p.images[0]} alt={p.title} className="other-print-img" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
               <div className="other-print-title">{p.title}</div>
             </div>
           ))}

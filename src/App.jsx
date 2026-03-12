@@ -125,15 +125,6 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
 
   return (
     <div className="app">
-      {/* Preload all project images */}
-      <div style={{ display: 'none' }} aria-hidden="true">
-        {projects.map((project) =>
-          project.images.map((src, i) => (
-            <img key={`${project.id}-${i}`} src={src} alt="" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
-          ))
-        )}
-      </div>
-
       {/* Hero — first room */}
       <section className="hero" id="hero">
         {/* Collage images — desktop only, built up by clicking print links */}
@@ -223,7 +214,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
                     onClick={() => navigate(`/print/${project.id}`, { state: { direction: 'forward' } })}
                     style={{ cursor: 'pointer' }}
                   >
-                    <img src={project.images[0]} alt={project.title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+                    <img src={project.images[0]} alt={project.title} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
                   </div>
                 )}
               </React.Fragment>
@@ -279,7 +270,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
           </div>
 
           <div className="about-images">
-            <img src="/me.png" alt="Alchemy Oliver" className="about-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+            <img src="/me.png" alt="Alchemy Oliver" className="about-image" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           </div>
         </div>
       </section>
