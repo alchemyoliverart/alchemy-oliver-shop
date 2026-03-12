@@ -1111,14 +1111,17 @@ body {
 
 .print-detail-image-wrap {
   position: relative;
-  display: inline-block;
   line-height: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .print-detail-image {
-  height: 70vh;
-  width: 100%;
-  object-fit: contain;
+  max-height: 70vh;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  display: block;
   border: 1px solid var(--cobalt-blue);
 }
 
@@ -1426,7 +1429,7 @@ body {
   }
 
   .print-detail-image {
-    max-height: 65vh;
+    max-height: 55vh;
   }
 
   .print-right {
