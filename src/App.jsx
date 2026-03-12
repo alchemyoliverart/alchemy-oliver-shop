@@ -9,6 +9,7 @@ import PrintPage from './PrintPage.jsx';
 import ContactPage from './Contact.jsx';
 import CheckoutSuccess from './CheckoutSuccess.jsx';
 import NotFound from './NotFound.jsx';
+import Archive from './Archive.jsx';
 import PrivacyPolicy from './PrivacyPolicy.jsx';
 import RefundPolicy from './RefundPolicy.jsx';
 import Terms from './Terms.jsx';
@@ -361,7 +362,7 @@ function App() {
   }, []);
 
   const [mobileExpandedIds, setMobileExpandedIds] = useState(new Set());
-  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout') || location.pathname === '/privacy-policy' || location.pathname === '/refund-policy' || location.pathname === '/terms';
+  const isPrintPage = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname.startsWith('/checkout') || location.pathname === '/privacy-policy' || location.pathname === '/refund-policy' || location.pathname === '/terms' || location.pathname === '/archive';
   const transitionClass = direction === 'back' ? 'slide-from-left' : 'slide-from-right';
 
   useEffect(() => {
@@ -394,6 +395,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/archive" element={<Archive />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

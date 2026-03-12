@@ -8,7 +8,7 @@ const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 function Nav() {
   const location = useLocation();
   const navigate = useNavigate();
-  const showBack = location.pathname.startsWith('/print/') || location.pathname === '/contact';
+  const showBack = location.pathname.startsWith('/print/') || location.pathname === '/contact' || location.pathname === '/archive';
   const { items, removeItem, updateQuantity, total, count } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
@@ -68,10 +68,11 @@ function Nav() {
         </button>
       </div>
       <div className="nav-center">
-        <Link to="/contact" className="nav-contact">contact</Link>
+        <Link to="/archive" className="nav-contact">archive</Link>
       </div>
       <div className="nav-right">
         <a href="https://instagram.com/alchemyoliver" target="_blank" rel="noopener noreferrer" className="nav-contact">instagram</a>
+        <Link to="/contact" className="nav-contact">contact</Link>
         <div className="nav-cart-wrapper" ref={cartRef}>
           <button
             className="nav-contact nav-cart-btn"
