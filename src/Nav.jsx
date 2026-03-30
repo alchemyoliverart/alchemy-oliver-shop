@@ -37,6 +37,7 @@ function Nav() {
           items: items.map(item => ({
             title: item.title,
             size: item.size,
+            border: item.border,
             amount: item.price,
             imageUrl: window.location.origin + item.image,
             quantity: item.quantity,
@@ -87,28 +88,28 @@ function Nav() {
                 <>
                   <div className="cart-items">
                     {items.map(item => (
-                      <div key={`${item.id}-${item.size}`} className="cart-item">
+                      <div key={`${item.id}-${item.size}-${item.border}`} className="cart-item">
                         <img src={item.image} alt={item.title} className="cart-item-thumb" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
                         <div className="cart-item-info">
                           <span className="cart-item-title">{item.title}</span>
                           <div className="cart-item-qty">
                             <button
                               className="cart-qty-btn"
-                              onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.quantity - 1); }}
+                              onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.border, item.quantity - 1); }}
                             >−</button>
                             <span className="cart-qty-num">{item.quantity}</span>
                             <button
                               className="cart-qty-btn"
-                              onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.quantity + 1); }}
+                              onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.border, item.quantity + 1); }}
                               disabled={item.quantity >= 5}
                             >+</button>
-                            <span className="cart-item-detail">{item.size}</span>
+                            <span className="cart-item-detail">{item.size} · {item.border}</span>
                           </div>
                         </div>
                         <span className="cart-item-price">${item.price * item.quantity}</span>
                         <button
                           className="cart-item-remove"
-                          onClick={(e) => { e.stopPropagation(); removeItem(item.id, item.size); }}
+                          onClick={(e) => { e.stopPropagation(); removeItem(item.id, item.size, item.border); }}
                         >×</button>
                       </div>
                     ))}

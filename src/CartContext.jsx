@@ -16,12 +16,12 @@ export function CartProvider({ children }) {
   }, [items]);
 
   const addItem = (item) => {
-    // item: { id, title, size, price, image, quantity }
+    // item: { id, title, size, border, price, image, quantity }
     setItems(prev => {
-      const existing = prev.find(i => i.id === item.id && i.size === item.size);
+      const existing = prev.find(i => i.id === item.id && i.size === item.size && i.border === item.border);
       if (existing) {
         return prev.map(i =>
-          i.id === item.id && i.size === item.size
+          i.id === item.id && i.size === item.size && i.border === item.border
             ? { ...i, quantity: Math.min(5, i.quantity + item.quantity) }
             : i
         );
@@ -30,17 +30,17 @@ export function CartProvider({ children }) {
     });
   };
 
-  const removeItem = (id, size) => {
-    setItems(prev => prev.filter(i => !(i.id === id && i.size === size)));
+  const removeItem = (id, size, border) => {
+    setItems(prev => prev.filter(i => !(i.id === id && i.size === size && i.border === border)));
   };
 
-  const updateQuantity = (id, size, qty) => {
+  const updateQuantity = (id, size, border, qty) => {
     if (qty <= 0) {
-      removeItem(id, size);
+      removeItem(id, size, border);
       return;
     }
     setItems(prev => prev.map(i =>
-      i.id === id && i.size === size
+      i.id === id && i.size === size && i.border === border
         ? { ...i, quantity: Math.min(5, qty) }
         : i
     ));
