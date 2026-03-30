@@ -1114,12 +1114,6 @@ body {
   line-height: 0;
   display: flex;
   justify-content: center;
-  transition: padding 0.2s ease, background 0.2s ease;
-}
-
-.print-detail-image-wrap.border-preview {
-  background: white;
-  padding: 8%;
 }
 
 .print-detail-image {
