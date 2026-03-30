@@ -11,11 +11,11 @@ module.exports = async function handler(req, res) {
 
   try {
     const session = await stripe.checkout.sessions.create({
-      line_items: items.map(({ title, size, amount, imageUrl, quantity }) => ({
+      line_items: items.map(({ title, size, border, amount, imageUrl, quantity }) => ({
         price_data: {
           currency: 'aud',
           product_data: {
-            name: `${title} — ${size}`,
+            name: `${title} — ${size}${border ? ` — ${border}` : ''}`,
             description: 'Limited edition fine art print, hand-signed with certificate of authenticity.',
             ...(imageUrl ? { images: [imageUrl] } : {}),
           },

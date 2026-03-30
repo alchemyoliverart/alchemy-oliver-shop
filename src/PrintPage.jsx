@@ -9,6 +9,7 @@ function PrintPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState('A2');
+  const [selectedBorder, setSelectedBorder] = useState('white border');
   const [selectedThumb, setSelectedThumb] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -41,6 +42,7 @@ function PrintPage() {
       id: project.id,
       title: project.title,
       size: selectedSize,
+      border: selectedBorder,
       price: prices[selectedSize],
       image: project.images[0],
       quantity,
@@ -147,6 +149,21 @@ function PrintPage() {
                     onClick={() => setQuantity(n)}
                   >
                     {n}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="option-group">
+              <div className="option-label">border</div>
+              <div className="option-buttons">
+                {['white border', 'no border'].map(b => (
+                  <button
+                    key={b}
+                    className={`option-btn ${selectedBorder === b ? 'active' : ''}`}
+                    onClick={() => setSelectedBorder(b)}
+                  >
+                    {b}
                   </button>
                 ))}
               </div>
