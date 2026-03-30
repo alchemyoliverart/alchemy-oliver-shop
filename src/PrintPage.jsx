@@ -66,7 +66,7 @@ function PrintPage() {
         {/* Left — image gallery */}
         <div className="print-left">
           <div
-            className="print-detail-image-wrap"
+            className={`print-detail-image-wrap${selectedBorder === 'white border' ? ' border-preview' : ''}`}
             onTouchStart={handleTouchStart}
             onTouchEnd={(e) => handleTouchEnd(e, thumbnails.length)}
           >
