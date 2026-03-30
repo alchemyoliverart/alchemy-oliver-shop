@@ -101,7 +101,7 @@ function Nav() {
                             <button
                               className="cart-qty-btn"
                               onClick={(e) => { e.stopPropagation(); updateQuantity(item.id, item.size, item.border, item.quantity + 1); }}
-                              disabled={item.quantity >= 5}
+                              disabled={item.quantity >= 3}
                             >+</button>
                             <span className="cart-item-detail">{item.size} · {item.border}</span>
                           </div>
