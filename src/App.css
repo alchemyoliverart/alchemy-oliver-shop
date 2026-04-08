@@ -1188,10 +1188,11 @@ body {
 }
 
 .print-edition {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--cobalt-blue);
   opacity: 0.7;
   margin-top: -1rem;
+  font-style: italic;
 }
 
 .option-group {
