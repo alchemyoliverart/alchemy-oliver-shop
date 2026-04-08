@@ -123,7 +123,7 @@ function PrintPage() {
 
           <div className="print-options">
             <div className="print-price">${currentPrice}</div>
-            <div className="print-edition">Limited edition of 10</div>
+            <div className="print-edition"><em>Limited edition of 10</em></div>
 
             <div className="option-group">
               <div className="option-label">size</div>
