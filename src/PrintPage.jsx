@@ -15,7 +15,7 @@ function PrintPage() {
   const touchStartX = useRef(null);
   const { addItem } = useCart();
 
-  const prices = { A3: 280, A2: 400, A1: 650 };
+  const prices = { A3: 280, A2: 420, A1: 600 };
   const currentPrice = prices[selectedSize];
   const project = projects.find(p => p.id === parseInt(id));
 
