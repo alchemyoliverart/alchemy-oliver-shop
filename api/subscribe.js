@@ -38,7 +38,7 @@ function welcomeEmailHtml() {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>welcome to the list</title>
+  <title>welcome :,)</title>
 </head>
 <body style="margin:0;padding:0;background:#D9D9D9;font-family:'JetBrains Mono',Menlo,Monaco,monospace;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#D9D9D9;padding:48px 24px;">
@@ -46,35 +46,57 @@ function welcomeEmailHtml() {
       <td align="center">
         <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
 
+          <!-- Logo -->
           <tr>
-            <td style="padding-bottom:32px;">
-              <p style="margin:0;font-size:11px;color:#0000FF;text-transform:lowercase;letter-spacing:0.05em;">
-                alchemy oliver
-              </p>
+            <td style="padding-bottom:40px;" align="left">
+              <img src="https://www.alchemyoliver.com/Logo.png"
+                   alt="alchemy oliver"
+                   width="180"
+                   style="display:block;border:0;max-width:180px;" />
             </td>
           </tr>
 
+          <!-- Welcome heading -->
           <tr>
-            <td style="padding-bottom:24px;border-bottom:1px solid #0000FF;">
-              <h1 style="margin:0;font-size:13px;font-weight:400;font-style:italic;color:#0000FF;text-transform:lowercase;line-height:1.6;">
-                welcome to the list
+            <td style="padding-bottom:32px;border-bottom:1px solid #0000FF;">
+              <h1 style="margin:0;font-size:14px;font-weight:400;color:#0000FF;text-transform:lowercase;line-height:1.6;letter-spacing:0.02em;">
+                welcome :,)
               </h1>
             </td>
           </tr>
 
+          <!-- Poem -->
           <tr>
-            <td style="padding:24px 0;">
-              <p style="margin:0 0 16px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
-                thank you for subscribing. you'll be the first to hear about new prints, limited releases, and occasional notes from the studio.
+            <td style="padding:32px 0 24px;">
+              <p style="margin:0 0 20px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;font-style:italic;">
+                &lsquo;petals, pixels, and memory&rsquo;
               </p>
-              <p style="margin:0 0 8px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
-                as a welcome gift, here is 10% off your first order:
+              <p style="margin:0 0 20px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;">
+                a practice of preservation -
+              </p>
+              <p style="margin:0 0 20px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:2;">
+                light,<br />
+                memory,<br />
+                grief.
+              </p>
+              <p style="margin:0 0 32px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:2;">
+                flowers gathered<br />
+                from moments already fading,<br />
+                held in light<br />
+                through scanning<br />
+                and digital layering.<br />
+                quiet records<br />
+                of impermanence.
               </p>
             </td>
           </tr>
 
+          <!-- Discount -->
           <tr>
-            <td style="padding:0 0 24px;">
+            <td style="padding-bottom:8px;">
+              <p style="margin:0 0 12px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
+                as a welcome gift, here is 10% off your first order:
+              </p>
               <table cellpadding="0" cellspacing="0" style="border:1px solid #0000FF;">
                 <tr>
                   <td style="padding:12px 24px;text-align:center;">
@@ -90,8 +112,9 @@ function welcomeEmailHtml() {
             </td>
           </tr>
 
+          <!-- CTA -->
           <tr>
-            <td style="padding-bottom:32px;">
+            <td style="padding:32px 0;">
               <a href="https://www.alchemyoliver.com"
                  style="display:inline-block;font-size:11px;color:#0000FF;text-transform:lowercase;text-decoration:underline;">
                 shop now &rarr;
@@ -99,6 +122,7 @@ function welcomeEmailHtml() {
             </td>
           </tr>
 
+          <!-- Footer -->
           <tr>
             <td style="padding-top:24px;border-top:1px solid #0000FF;">
               <p style="margin:0;font-size:10px;color:#0000FF;text-transform:lowercase;opacity:0.6;line-height:1.8;">
