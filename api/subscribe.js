@@ -30,7 +30,7 @@ function sanitizeEmail(val) {
 }
 
 // ---------------------------------------------------------------------------
-// Welcome email HTML — matches site aesthetic (grey bg, cobalt blue, mono font)
+// Welcome email HTML — blue bg, white text, mono font
 // ---------------------------------------------------------------------------
 function welcomeEmailHtml() {
   return `<!DOCTYPE html>
@@ -40,73 +40,55 @@ function welcomeEmailHtml() {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>welcome :,)</title>
 </head>
-<body style="margin:0;padding:0;background:#D9D9D9;font-family:'JetBrains Mono',Menlo,Monaco,monospace;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#D9D9D9;padding:48px 24px;">
+<body style="margin:0;padding:0;background:#0000FF;font-family:'JetBrains Mono',Menlo,Monaco,monospace;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0000FF;padding:40px 32px;">
     <tr>
-      <td align="center">
-        <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
+      <td align="left">
+        <table width="100%" style="max-width:520px;" cellpadding="0" cellspacing="0">
 
-          <!-- Logo -->
+          <!-- Flower graphic top left -->
           <tr>
-            <td style="padding-bottom:20px;" align="left">
-              <img src="https://www.alchemyoliver.com/Logo.png"
-                   alt="alchemy oliver"
-                   width="180"
-                   style="display:block;border:0;max-width:180px;" />
+            <td style="padding-bottom:16px;">
+              <img src="https://www.alchemyoliver.com/FlowerGRaphic.png"
+                   alt=""
+                   width="80"
+                   style="display:block;border:0;max-width:80px;" />
             </td>
           </tr>
 
-          <!-- Welcome heading -->
+          <!-- Welcome + subtitle -->
           <tr>
-            <td style="padding-bottom:16px;border-bottom:1px solid #0000FF;">
-              <h1 style="margin:0;font-size:14px;font-weight:400;color:#0000FF;text-transform:lowercase;line-height:1.6;letter-spacing:0.02em;">
+            <td style="padding-bottom:24px;">
+              <h1 style="margin:0 0 6px;font-size:14px;font-weight:400;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;line-height:1.4;">
                 welcome :,)
               </h1>
+              <p style="margin:0;font-size:11px;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;line-height:1.5;">
+                you are now a part of the alchemy oliver studio
+              </p>
             </td>
           </tr>
 
-          <!-- Poem -->
+          <!-- Body text -->
           <tr>
-            <td style="padding:16px 0 12px;">
-              <p style="margin:0 0 10px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;font-style:italic;">
-                &lsquo;petals, pixels, and memory&rsquo;
-              </p>
-              <p style="margin:0 0 10px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;">
-                a practice of preservation -
-              </p>
-              <p style="margin:0 0 10px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
-                light,<br />
-                memory,<br />
-                grief.
-              </p>
-              <p style="margin:0 0 16px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
-                flowers gathered<br />
-                from moments already fading,<br />
-                held in light<br />
-                through scanning<br />
-                and digital layering.<br />
-                quiet records<br />
-                of impermanence.
+            <td style="padding-bottom:28px;">
+              <p style="margin:0 0 10px;font-size:11px;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;line-height:1.8;">
+                thank you for subscribing.<br />
+                you'll be the first to hear about new prints,<br />
+                limited releases, and occasional notes from the studio.
               </p>
             </td>
           </tr>
 
           <!-- Discount -->
           <tr>
-            <td style="padding-bottom:8px;">
-              <p style="margin:0 0 12px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
+            <td style="padding-bottom:6px;">
+              <p style="margin:0 0 12px;font-size:11px;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;line-height:1.8;">
                 as a welcome gift, here is 10% off your first order:
               </p>
-              <table cellpadding="0" cellspacing="0" style="border:1px solid #0000FF;">
-                <tr>
-                  <td style="padding:12px 24px;text-align:center;">
-                    <span style="font-size:18px;font-weight:700;color:#0000FF;text-transform:uppercase;letter-spacing:0.12em;">
-                      WELCOME10
-                    </span>
-                  </td>
-                </tr>
-              </table>
-              <p style="margin:8px 0 0;font-size:10px;color:#0000FF;text-transform:lowercase;opacity:0.7;">
+              <p style="margin:0 0 6px;font-size:22px;font-weight:700;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:uppercase;letter-spacing:0.08em;">
+                WELCOME10
+              </p>
+              <p style="margin:0 0 20px;font-size:10px;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;opacity:0.75;">
                 enter at checkout &mdash; one use per customer
               </p>
             </td>
@@ -114,18 +96,28 @@ function welcomeEmailHtml() {
 
           <!-- CTA -->
           <tr>
-            <td style="padding:32px 0;">
+            <td style="padding-bottom:40px;">
               <a href="https://www.alchemyoliver.com"
-                 style="display:inline-block;font-size:11px;color:#0000FF;text-transform:lowercase;text-decoration:underline;">
+                 style="font-size:11px;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;text-decoration:underline;">
                 shop now &rarr;
               </a>
             </td>
           </tr>
 
+          <!-- Bottom logo -->
+          <tr>
+            <td style="padding-bottom:24px;">
+              <img src="https://www.alchemyoliver.com/Black_White_Logo.png"
+                   alt="alchemy oliver"
+                   width="200"
+                   style="display:block;border:0;max-width:200px;" />
+            </td>
+          </tr>
+
           <!-- Footer -->
           <tr>
-            <td style="padding-top:24px;border-top:1px solid #0000FF;">
-              <p style="margin:0;font-size:10px;color:#0000FF;text-transform:lowercase;opacity:0.6;line-height:1.8;">
+            <td>
+              <p style="margin:0;font-size:10px;color:#ffffff;font-family:'JetBrains Mono',Menlo,Monaco,monospace;text-transform:lowercase;opacity:0.5;line-height:1.8;">
                 &copy; 2026 alchemy oliver &mdash; scanography &amp; multimedia artist<br />
                 you're receiving this because you subscribed at alchemyoliver.com
               </p>
