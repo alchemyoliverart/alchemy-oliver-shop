@@ -48,7 +48,7 @@ function welcomeEmailHtml() {
 
           <!-- Logo -->
           <tr>
-            <td style="padding-bottom:40px;" align="left">
+            <td style="padding-bottom:20px;" align="left">
               <img src="https://www.alchemyoliver.com/Logo.png"
                    alt="alchemy oliver"
                    width="180"
@@ -58,7 +58,7 @@ function welcomeEmailHtml() {
 
           <!-- Welcome heading -->
           <tr>
-            <td style="padding-bottom:32px;border-bottom:1px solid #0000FF;">
+            <td style="padding-bottom:16px;border-bottom:1px solid #0000FF;">
               <h1 style="margin:0;font-size:14px;font-weight:400;color:#0000FF;text-transform:lowercase;line-height:1.6;letter-spacing:0.02em;">
                 welcome :,)
               </h1>
@@ -67,19 +67,19 @@ function welcomeEmailHtml() {
 
           <!-- Poem -->
           <tr>
-            <td style="padding:32px 0 24px;">
-              <p style="margin:0 0 20px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;font-style:italic;">
+            <td style="padding:16px 0 12px;">
+              <p style="margin:0 0 10px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;font-style:italic;">
                 &lsquo;petals, pixels, and memory&rsquo;
               </p>
-              <p style="margin:0 0 20px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;">
+              <p style="margin:0 0 10px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.4;">
                 a practice of preservation -
               </p>
-              <p style="margin:0 0 20px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:2;">
+              <p style="margin:0 0 10px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
                 light,<br />
                 memory,<br />
                 grief.
               </p>
-              <p style="margin:0 0 32px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:2;">
+              <p style="margin:0 0 16px;font-size:11px;color:#0000FF;text-transform:lowercase;line-height:1.8;">
                 flowers gathered<br />
                 from moments already fading,<br />
                 held in light<br />
