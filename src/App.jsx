@@ -51,10 +51,33 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
   const [collageImages, setCollageImages] = useState([]);
   const [draggingId, setDraggingId] = useState(null);
   const [polaroidFanned, setPolaroidFanned] = useState(false);
+  const [subEmail, setSubEmail] = useState('');
+  const [subStatus, setSubStatus] = useState(null); // null | 'loading' | 'success' | 'error'
+  const [subError, setSubError] = useState('');
   const aboutRef = React.useRef(null);
   const navigate = useNavigate();
   const dragging = React.useRef(null);
   const hasDragged = React.useRef(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setSubStatus('loading');
+    setSubError('');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: subEmail }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'something went wrong.');
+      setSubStatus('success');
+      setSubEmail('');
+    } catch (err) {
+      setSubError(err.message);
+      setSubStatus('error');
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -282,6 +305,42 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
             <img src="/me.png" alt="Alchemy Oliver" className="about-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           </div>
         </div>
+      </section>
+
+      {/* Mailing list */}
+      <section className="mailing-list-section">
+        <div className="mailing-list-header">stay in the loop</div>
+        <p className="mailing-list-text">
+          new prints, limited releases, and occasional studio notes.
+          subscribe and get <strong>10% off your first order</strong>.
+        </p>
+        {subStatus === 'success' ? (
+          <p className="mailing-list-success">
+            you're on the list — check your inbox for your discount code.
+          </p>
+        ) : (
+          <form className="mailing-list-form" onSubmit={handleSubscribe}>
+            <input
+              className="mailing-list-input"
+              type="email"
+              placeholder="your@email.com"
+              value={subEmail}
+              onChange={(e) => setSubEmail(e.target.value)}
+              required
+              disabled={subStatus === 'loading'}
+            />
+            <button
+              className="mailing-list-btn"
+              type="submit"
+              disabled={subStatus === 'loading'}
+            >
+              {subStatus === 'loading' ? 'subscribing...' : 'subscribe'}
+            </button>
+          </form>
+        )}
+        {subStatus === 'error' && (
+          <p className="mailing-list-error">{subError}</p>
+        )}
       </section>
 
       {/* Footer */}
