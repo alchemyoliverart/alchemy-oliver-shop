@@ -775,6 +775,102 @@ body {
   text-align: left;
 }
 
+/* Mailing list section */
+.mailing-list-section {
+  padding: 4rem 3rem;
+  border-top: 1px solid var(--cobalt-blue);
+  text-align: center;
+}
+
+.mailing-list-header {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cobalt-blue);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.mailing-list-text {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mailing-list-text strong {
+  font-weight: 700;
+}
+
+.mailing-list-form {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.mailing-list-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: var(--cobalt-blue);
+  background: transparent;
+  border: 1px solid var(--cobalt-blue);
+  border-right: none;
+  outline: none;
+  text-transform: lowercase;
+}
+
+.mailing-list-input::placeholder {
+  color: var(--cobalt-blue);
+  opacity: 0.4;
+}
+
+.mailing-list-input:focus {
+  background: rgba(0, 0, 255, 0.04);
+}
+
+.mailing-list-btn {
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--primary-bg);
+  background: var(--cobalt-blue);
+  border: 1px solid var(--cobalt-blue);
+  cursor: pointer;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+}
+
+.mailing-list-btn:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.mailing-list-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.mailing-list-success {
+  font-size: 0.7rem;
+  color: var(--cobalt-blue);
+  line-height: 1.8;
+}
+
+.mailing-list-error {
+  margin-top: 0.75rem;
+  font-size: 0.65rem;
+  color: var(--cobalt-blue);
+  opacity: 0.7;
+}
+
 /* Footer */
 .footer {
   padding: 3rem;
@@ -920,6 +1016,24 @@ body {
   .about,
   .store {
     padding: 4rem 1.5rem;
+  }
+
+  .mailing-list-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .mailing-list-form {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mailing-list-input {
+    border-right: 1px solid var(--cobalt-blue);
+    border-bottom: none;
+  }
+
+  .mailing-list-btn {
+    width: 100%;
   }
 
   .cart-dropdown {

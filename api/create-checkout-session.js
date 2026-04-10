@@ -25,6 +25,7 @@ module.exports = async function handler(req, res) {
         adjustable_quantity: { enabled: true, minimum: 1, maximum: 5 },
       })),
       mode: 'payment',
+      allow_promotion_codes: true,
       shipping_address_collection: {
         allowed_countries: [
           'AU', 'NZ',
