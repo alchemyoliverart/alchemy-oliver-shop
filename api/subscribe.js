@@ -38,7 +38,7 @@ function welcomeEmailHtml() {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>welcome to the list</title>
+  <title>welcome to the studio</title>
 </head>
 <body style="margin:0;padding:0;background:#D9D9D9;font-family:'JetBrains Mono',Menlo,Monaco,monospace;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#D9D9D9;padding:48px 24px;">
@@ -62,7 +62,7 @@ function welcomeEmailHtml() {
                 <tr>
                   <td style="vertical-align:middle;white-space:nowrap;">
                     <h1 style="margin:0;font-size:13px;font-weight:400;font-style:italic;color:#0000FF;text-transform:lowercase;line-height:1.6;">
-                      welcome to the list
+                      welcome to the studio
                     </h1>
                   </td>
                   <td style="vertical-align:middle;padding-left:10px;">
@@ -108,11 +108,21 @@ function welcomeEmailHtml() {
 
           <!-- CTA -->
           <tr>
-            <td style="padding-bottom:32px;">
+            <td style="padding-bottom:16px;">
               <a href="https://www.alchemyoliver.com"
                  style="display:inline-block;font-size:11px;color:#0000FF;text-transform:lowercase;text-decoration:underline;">
                 shop now &rarr;
               </a>
+            </td>
+          </tr>
+
+          <!-- Butterfly -->
+          <tr>
+            <td style="padding-bottom:32px;">
+              <img src="https://www.alchemyoliver.com/butterfly1.png"
+                   alt=""
+                   width="45"
+                   style="display:block;border:0;max-width:45px;" />
             </td>
           </tr>
 
