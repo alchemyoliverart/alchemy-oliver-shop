@@ -65,6 +65,25 @@ function PrintPage() {
   const pageUrl = `https://www.alchemyoliver.com/print/${project.id}`;
   const pageImage = `https://www.alchemyoliver.com${project.images[0]}`;
 
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: project.title,
+    description: pageDescription,
+    sku: `AO-${project.id}`,
+    image: project.images.map(img => `https://www.alchemyoliver.com${img}`),
+    brand: { '@type': 'Brand', name: 'Alchemy Oliver' },
+    offers: {
+      '@type': 'AggregateOffer',
+      url: pageUrl,
+      priceCurrency: 'AUD',
+      lowPrice: prices.A3,
+      highPrice: prices.A1,
+      offerCount: 3,
+      availability: project.soldOut ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+    },
+  };
+
   return (
     <div className="print-page">
       <Helmet>
@@ -80,6 +99,7 @@ function PrintPage() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={pageImage} />
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
       </Helmet>
       <div className="print-layout">
 
