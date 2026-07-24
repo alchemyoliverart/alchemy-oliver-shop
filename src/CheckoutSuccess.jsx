@@ -41,7 +41,7 @@ function CheckoutSuccess() {
   if (status === 'invalid') {
     return (
       <div className="contact-page" style={{ textAlign: 'center' }}>
-        <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+        <img src="/Logo.webp" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
         <h2 className="contact-heading">order not found</h2>
         <p className="contact-intro">
           we couldn't verify this order. if you believe this is an error, please <Link to="/contact" className="footer-link">get in touch</Link>.
@@ -55,7 +55,7 @@ function CheckoutSuccess() {
 
   return (
     <div className="contact-page" style={{ textAlign: 'center' }}>
-      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+      <img src="/Logo.webp" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
       <h2 className="contact-heading">thank you ;')</h2>
       <p className="contact-intro">
         your order has been received. a confirmation has been sent to your email.

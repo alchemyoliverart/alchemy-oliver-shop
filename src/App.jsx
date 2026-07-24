@@ -173,7 +173,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
         ))}
         {/* Left panel: tagline + about */}
         <div className="top-left-panel">
-          <img src="/Logo.png" alt="Alchemy Oliver" className="panel-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+          <img src="/Logo.webp" alt="Alchemy Oliver" className="panel-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           <div className="panel-poem">
             <p>
               'petals, pixels, and memory'<br />
@@ -293,7 +293,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
           </div>
 
           <div className="about-images">
-            <img src="/me.png" alt="Alchemy Oliver" className="about-image" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+            <img src="/me.webp" alt="Alchemy Oliver" className="about-image" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           </div>
         </div>
       </section>

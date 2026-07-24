@@ -35,7 +35,7 @@ function ContactPage() {
 
   return (
     <div className="contact-page">
-      <img src="/Logo.png" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+      <img src="/Logo.webp" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
 
       <h1 className="contact-heading">contact</h1>
 
