@@ -459,7 +459,7 @@ function App() {
         <ScrollToTop />
 
         {/* Page content with slide transition */}
-        <div key={location.key} className={`page-transition ${transitionClass}`}>
+        <main key={location.key} className={`page-transition ${transitionClass}`}>
           <Routes location={location}>
             <Route path="/" element={<HomePage mobileExpandedIds={mobileExpandedIds} setMobileExpandedIds={setMobileExpandedIds} splashDone={splashDone} />} />
             <Route path="/print/:id" element={<PrintPage />} />
@@ -470,7 +470,7 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </div>
+        </main>
       </div>
       <Analytics />
       <SpeedInsights />

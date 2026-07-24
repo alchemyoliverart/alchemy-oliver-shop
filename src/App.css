@@ -912,11 +912,9 @@ body {
   font-size: 0.7rem;
   color: var(--cobalt-blue);
   text-decoration: none;
-  opacity: 0.6;
 }
 
 .footer-link:hover {
-  opacity: 1;
   text-decoration: underline;
 }
 
@@ -969,6 +967,12 @@ body {
   .nav-center,
   .nav-right {
     justify-self: center;
+  }
+
+  .nav-home,
+  .nav-contact {
+    padding: 0.4rem 0.5rem;
+    min-height: 24px;
   }
 
   /* Hero flows to auto height so content isn't clipped */
