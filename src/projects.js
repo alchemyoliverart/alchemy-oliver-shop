@@ -61,4 +61,8 @@ const projects = [
   },
 ];
 
+export function altTextFor(project) {
+  return `${project.title} — limited edition fine art print by Alchemy Oliver`;
+}
+
 export default projects;

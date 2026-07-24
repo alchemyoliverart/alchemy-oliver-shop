@@ -13,7 +13,7 @@ import PrivacyPolicy from './PrivacyPolicy.jsx';
 import RefundPolicy from './RefundPolicy.jsx';
 import Terms from './Terms.jsx';
 import { Helmet } from 'react-helmet-async';
-import projects from './projects.js';
+import projects, { altTextFor } from './projects.js';
 import './App.css';
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
@@ -182,7 +182,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
             aria-label={`View ${item.title}`}
           >
             <div className="collage-image" style={{ '--img-rotation': `${item.rotation}deg` }}>
-              <img src={item.src} alt={item.title} className="collage-image-content" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+              <img src={item.src} alt={altTextFor(item)} className="collage-image-content" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
             </div>
           </div>
         ))}
@@ -252,7 +252,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
                     onClick={() => navigate(`/print/${project.id}`, { state: { direction: 'forward' } })}
                     style={{ cursor: 'pointer' }}
                   >
-                    <img src={project.images[0]} alt={project.title} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+                    <img src={project.images[0]} alt={altTextFor(project)} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
                   </div>
                 )}
               </React.Fragment>
@@ -308,7 +308,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
           </div>
 
           <div className="about-images">
-            <img src="/me.webp" alt="Alchemy Oliver" className="about-image" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+            <img src="/me.webp" alt="Alchemy Oliver, Melbourne-based scanography and multi-media artist" className="about-image" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           </div>
         </div>
       </section>
