@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function PrivacyPolicy() {
   return (
     <div className="contact-page policy-page">
+      <Helmet>
+        <title>Privacy Policy — Alchemy Oliver</title>
+        <meta name="description" content="Privacy policy for Alchemy Oliver's fine art print shop." />
+        <link rel="canonical" href="https://www.alchemyoliver.com/privacy-policy" />
+      </Helmet>
       <h1 className="contact-heading">privacy policy</h1>
       <p className="contact-text">atomic alchemy</p>
       <p className="contact-text">ABN: 21 481 257 887</p>

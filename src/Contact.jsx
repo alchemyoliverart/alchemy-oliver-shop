@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
 
@@ -35,6 +36,11 @@ function ContactPage() {
 
   return (
     <div className="contact-page">
+      <Helmet>
+        <title>Contact — Alchemy Oliver</title>
+        <meta name="description" content="Get in touch about print orders, framing quotes, or local pickup with Melbourne-based artist Alchemy Oliver." />
+        <link rel="canonical" href="https://www.alchemyoliver.com/contact" />
+      </Helmet>
       <img src="/Logo.webp" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
 
       <h1 className="contact-heading">contact</h1>

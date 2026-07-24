@@ -12,6 +12,7 @@ import NotFound from './NotFound.jsx';
 import PrivacyPolicy from './PrivacyPolicy.jsx';
 import RefundPolicy from './RefundPolicy.jsx';
 import Terms from './Terms.jsx';
+import { Helmet } from 'react-helmet-async';
 import projects from './projects.js';
 import './App.css';
 
@@ -148,6 +149,20 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
 
   return (
     <div className="app">
+      <Helmet>
+        <title>Alchemy Oliver — Multidisciplinary Artist — Melbourne</title>
+        <meta name="description" content="Alchemy Oliver — scanography and multi-media artist. Limited edition fine art prints exploring light, memory, and impermanence through scanned flora and digital layering." />
+        <link rel="canonical" href="https://www.alchemyoliver.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.alchemyoliver.com/" />
+        <meta property="og:title" content="Alchemy Oliver" />
+        <meta property="og:description" content="Limited edition fine art prints exploring light, memory, and impermanence through scanned flora and digital layering." />
+        <meta property="og:image" content="https://www.alchemyoliver.com/petels-Pixels-andmemory_orchid.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Alchemy Oliver" />
+        <meta name="twitter:description" content="Limited edition fine art prints exploring light, memory, and impermanence through scanned flora and digital layering." />
+        <meta name="twitter:image" content="https://www.alchemyoliver.com/petels-Pixels-andmemory_orchid.jpg" />
+      </Helmet>
       {/* Hero — first room */}
       <section className="hero" id="hero">
         {/* Collage images — desktop only, built up by clicking print links */}

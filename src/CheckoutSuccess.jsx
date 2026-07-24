@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useCart } from './CartContext.jsx';
+
+const NoIndex = () => (
+  <Helmet>
+    <title>Order Confirmation — Alchemy Oliver</title>
+    <meta name="robots" content="noindex" />
+  </Helmet>
+);
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
 
@@ -33,6 +41,7 @@ function CheckoutSuccess() {
   if (status === 'loading') {
     return (
       <div className="contact-page" style={{ textAlign: 'center' }}>
+        <NoIndex />
         <p className="contact-intro">verifying your order...</p>
       </div>
     );
@@ -41,6 +50,7 @@ function CheckoutSuccess() {
   if (status === 'invalid') {
     return (
       <div className="contact-page" style={{ textAlign: 'center' }}>
+        <NoIndex />
         <img src="/Logo.webp" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
         <h2 className="contact-heading">order not found</h2>
         <p className="contact-intro">
@@ -55,6 +65,7 @@ function CheckoutSuccess() {
 
   return (
     <div className="contact-page" style={{ textAlign: 'center' }}>
+      <NoIndex />
       <img src="/Logo.webp" alt="Alchemy Oliver" className="contact-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
       <h2 className="contact-heading">thank you ;')</h2>
       <p className="contact-intro">

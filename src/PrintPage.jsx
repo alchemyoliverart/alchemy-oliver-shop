@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import projects from './projects.js';
 import { useCart } from './CartContext.jsx';
 
@@ -59,8 +60,27 @@ function PrintPage() {
 
   const otherProjects = projects.filter(p => p.id !== project.id);
 
+  const pageTitle = `${project.title} — Limited Edition Fine Art Print | Alchemy Oliver`;
+  const pageDescription = `${project.description.replace(/\n+/g, ' ').trim().slice(0, 155)} — limited edition of 10, hand-signed archival print by Alchemy Oliver.`;
+  const pageUrl = `https://www.alchemyoliver.com/print/${project.id}`;
+  const pageImage = `https://www.alchemyoliver.com${project.images[0]}`;
+
   return (
     <div className="print-page">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+      </Helmet>
       <div className="print-layout">
 
         {/* Left — image gallery */}
