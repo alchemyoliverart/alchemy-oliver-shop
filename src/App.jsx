@@ -173,7 +173,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
         ))}
         {/* Left panel: tagline + about */}
         <div className="top-left-panel">
-          <img src="/Logo.webp" alt="Alchemy Oliver" className="panel-logo" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
+          <img src="/Logo.webp" alt="Alchemy Oliver" className="panel-logo" fetchpriority="high" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
           <div className="panel-poem">
             <p>
               'petals, pixels, and memory'<br />
