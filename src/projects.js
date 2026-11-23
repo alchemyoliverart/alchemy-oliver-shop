@@ -24,17 +24,6 @@ const projects = [
     soldOut: false,
   },
   {
-    id: 3,
-    title: 'floral_fragments',
-    images: [
-      '/floral_fragments.jpg',
-      '/Generative Fill 2.webp',
-    ],
-    position: 'top-right',
-    description: 'a bloom\nbreaking apart\nin light,\n\neach petal\ndrifting into\nsignal and\nnoise.\n\nwhat remains\nis not the flower itself,\nbut the feeling of it.',
-    soldOut: false,
-  },
-  {
     id: 4,
     title: 'home_grown01',
     images: [

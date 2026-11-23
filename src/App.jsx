@@ -217,7 +217,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
         <div className="projects-menu">
           <div className="projects-header">Available prints</div>
           <div className="projects-list">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <React.Fragment key={project.id}>
                 <div
                   className={`project-item-compact ${collageImages.some(img => img.id === project.id) ? 'active' : ''} ${mobileExpandedIds.has(project.id) ? 'mobile-active' : ''}`}
@@ -234,7 +234,7 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
                     }
                   }}
                 >
-                  <span className="project-number-compact">{String(project.id).padStart(2, '0')}</span>
+                  <span className="project-number-compact">{String(index + 1).padStart(2, '0')}</span>
                   <span className="project-title-compact">{project.title}</span>
                   {project.soldOut && <span className="project-sold">sold</span>}
                   <span
