@@ -198,6 +198,11 @@ module.exports = async function handler(req, res) {
     // 409 = already subscribed — not an error worth surfacing
     if (!contactRes.ok && contactRes.status !== 409) {
       const err = await contactRes.json().catch(() => ({}));
+      // 422 = Resend rejected the address itself — tell the visitor so they can fix it
+      if (contactRes.status === 422) {
+        console.warn('Resend rejected email address:', err);
+        return res.status(400).json({ error: "That email address doesn't look right — please check it and try again." });
+      }
       console.error('Resend contacts error:', err);
       return res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
     }
