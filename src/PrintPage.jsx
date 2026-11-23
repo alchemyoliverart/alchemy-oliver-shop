@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import projects, { altTextFor } from './projects.js';
 import { useCart } from './CartContext.jsx';
@@ -241,15 +241,15 @@ function PrintPage() {
         <div className="other-prints-heading">other prints</div>
         <div className="other-prints-scroll">
           {otherProjects.map(p => (
-            <div
+            <Link
               key={p.id}
+              to={`/print/${p.id}`}
+              state={{ direction: 'forward' }}
               className="other-print-card"
-              role="button"
-              onClick={() => navigate(`/print/${p.id}`, { state: { direction: 'forward' } })}
             >
               <img src={p.images[0]} alt={altTextFor(p)} className="other-print-img" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
               <div className="other-print-title">{p.title}</div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -237,23 +237,23 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
                   <span className="project-number-compact">{String(index + 1).padStart(2, '0')}</span>
                   <span className="project-title-compact">{project.title}</span>
                   {project.soldOut && <span className="project-sold">sold</span>}
-                  <span
+                  <Link
+                    to={`/print/${project.id}`}
+                    state={{ direction: 'forward' }}
                     className="project-inquire"
-                    role="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate(`/print/${project.id}`, { state: { direction: 'forward' } });
-                    }}
-                  >→</span>
+                    aria-label={`View ${project.title}`}
+                    onClick={(e) => e.stopPropagation()}
+                  >→</Link>
                 </div>
                 {mobileExpandedIds.has(project.id) && (
-                  <div
+                  <Link
+                    to={`/print/${project.id}`}
+                    state={{ direction: 'forward' }}
                     className="mobile-project-image"
-                    onClick={() => navigate(`/print/${project.id}`, { state: { direction: 'forward' } })}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: 'pointer', display: 'block' }}
                   >
                     <img src={project.images[0]} alt={altTextFor(project)} loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = FALLBACK_IMG; }} />
-                  </div>
+                  </Link>
                 )}
               </React.Fragment>
             ))}
@@ -269,8 +269,8 @@ function HomePage({ mobileExpandedIds, setMobileExpandedIds, splashDone }) {
         <div className="ordering-box">
           <div className="ordering-header">ordering</div>
           <p className="ordering-text">print orders are now open for 2026.</p>
-          <p className="ordering-text">available unframed. framing available on request — <span style={{cursor:'pointer', textDecoration:'underline'}} onClick={() => navigate('/contact')}>get in touch</span> for a quote.</p>
-          <p className="ordering-text">local pickup available - <span style={{cursor:'pointer', textDecoration:'underline'}} onClick={() => navigate('/contact')}>get in touch</span> to arrange.</p>
+          <p className="ordering-text">available unframed. framing available on request — <Link to="/contact" className="inline-text-link">get in touch</Link> for a quote.</p>
+          <p className="ordering-text">local pickup available - <Link to="/contact" className="inline-text-link">get in touch</Link> to arrange.</p>
         </div>
 
         </div>{/* end hero-right-panels */}

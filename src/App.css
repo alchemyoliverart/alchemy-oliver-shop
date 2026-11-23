@@ -1632,3 +1632,14 @@ body {
   font-style: italic;
   margin-top: 1rem;
 }
+
+/* Real <a> links (crawlable) styled to look like the previous buttons/spans */
+a.project-inquire,
+a.mobile-project-image,
+a.other-print-card,
+a.inline-text-link {
+  color: inherit;
+  text-decoration: none;
+}
+a.other-print-card { display: block; }
+a.inline-text-link { text-decoration: underline; }
