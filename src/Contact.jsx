@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E";
@@ -7,6 +7,9 @@ function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: 'print enquiry', message: '' });
   const [status, setStatus] = useState(null); // null | 'sending' | 'success' | 'error'
   const [errorMsg, setErrorMsg] = useState('');
+  // Spam protection: hidden honeypot field + time the form was first shown
+  const [honeypot, setHoneypot] = useState('');
+  const loadedAt = useRef(Date.now());
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -18,7 +21,7 @@ function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website: honeypot, t: loadedAt.current }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -73,6 +76,11 @@ function ContactPage() {
       </div>
 
       <form className="contact-form" onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to people, bots tend to fill it in */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px', overflow: 'hidden' }}>
+          <label htmlFor="website">website</label>
+          <input id="website" type="text" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        </div>
         <div className="form-group">
           <label className="form-label">name</label>
           <input className="form-input" type="text" name="name" value={form.name} onChange={handleChange} required />
